@@ -632,7 +632,7 @@ Rectangle {
             }
 
             Text {
-                id: mainText7
+                id: substrateConstantsText11
                 x: 39
                 y: 163
                 text: qsTr("Reaction rate constants of substrate inhibition equations")
@@ -640,7 +640,7 @@ Rectangle {
             }
 
             Text {
-                id: mainText8
+                id: productConstantsText11
                 x: 39
                 y: 277
                 text: qsTr("Reaction rate constants of product inhibition equations")
@@ -792,24 +792,58 @@ Rectangle {
                 height: 20
                 radius: 6
                 border.color: "#000000"
-                state: "ENABLED"
+                state: "SUBSTRATE_INHIBITION_ENABLED"
 
                 states: [
                     State {
-                        name: "ENABLED"
+                        name: "SUBSTRATE_INHIBITION_ENABLED"
                         PropertyChanges { target: substrateCheckbox; color: "green"}
                         PropertyChanges { target: substrateText1; color: "black"}
                         PropertyChanges { target: substrateText2; color: "black"}
                         PropertyChanges { target: substrateText3; color: "black"}
                         PropertyChanges { target: substrateText4; color: "black"}
+                        PropertyChanges { target: substrateConstantsText1; color: "black"}
+                        PropertyChanges { target: substrateConstantsText2; color: "black"}
+                        PropertyChanges { target: substrateConstantsText3; color: "black"}
+                        PropertyChanges { target: substrateConstantsText4; color: "black"}
+                        PropertyChanges { target: substrateConstantsText5; color: "black"}
+                        PropertyChanges { target: substrateConstantsText6; color: "black"}
+                        PropertyChanges { target: substrateConstantsText7; color: "black"}
+                        PropertyChanges { target: substrateConstantsText8; color: "black"}
+                        PropertyChanges { target: substrateConstantsText10; color: "black"}
+                        PropertyChanges { target: substrateConstantsText11; color: "black"}
+                        PropertyChanges { target: k3TextInput; readOnly: false}
+                        PropertyChanges { target: k3TextInput; color: "black"}
+                        PropertyChanges { target: k_3TextInput; readOnly: false}
+                        PropertyChanges { target: k_3TextInput; color: "black"}
+                        PropertyChanges { target: ksConstant; color: "black"}
+                        PropertyChanges { target: ksFractionLine; color: "black"}
+                        PropertyChanges { target: ksFractionLine; border.color: "black"}
                     },
                     State {
-                        name: "DISABLED"
+                        name: "SUBSTRATE_INHIBITION_DISABLED"
                         PropertyChanges { target: substrateCheckbox; color: "white"}
                         PropertyChanges { target: substrateText1; color: "grey"}
                         PropertyChanges { target: substrateText2; color: "grey"}
                         PropertyChanges { target: substrateText3; color: "grey"}
                         PropertyChanges { target: substrateText4; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText1; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText2; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText3; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText4; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText5; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText6; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText7; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText8; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText10; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText11; color: "grey"}
+                        PropertyChanges { target: k3TextInput; readOnly: true}
+                        PropertyChanges { target: k3TextInput; color: "grey"}
+                        PropertyChanges { target: k_3TextInput; readOnly: true}
+                        PropertyChanges { target: k_3TextInput; color: "grey"}
+                        PropertyChanges { target: ksConstant; color: "grey"}
+                        PropertyChanges { target: ksFractionLine; color: "grey"}
+                        PropertyChanges { target: ksFractionLine; border.color: "grey"}
                     }
                 ]
 
@@ -817,10 +851,10 @@ Rectangle {
                     id: substrateCheckboxMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if (substrateCheckbox.state == "ENABLED")
-                            substrateCheckbox.state = "DISABLED"
+                        if (substrateCheckbox.state == "SUBSTRATE_INHIBITION_ENABLED")
+                            substrateCheckbox.state = "SUBSTRATE_INHIBITION_DISABLED"
                         else
-                            substrateCheckbox.state = "ENABLED"
+                            substrateCheckbox.state = "SUBSTRATE_INHIBITION_ENABLED"
                     }
                 }
             }
@@ -841,24 +875,58 @@ Rectangle {
                 height: 20
                 radius: 6
                 border.color: "#000000"
-                state: "ENABLED"
+                state: "PRODUCT_INHIBITION_ENABLED"
 
                 states: [
                     State {
-                        name: "ENABLED"
+                        name: "PRODUCT_INHIBITION_ENABLED"
                         PropertyChanges { target: productCheckbox; color: "green"}
                         PropertyChanges { target: productText1; color: "black"}
                         PropertyChanges { target: productText2; color: "black"}
                         PropertyChanges { target: productText3; color: "black"}
                         PropertyChanges { target: productText4; color: "black"}
+                        PropertyChanges { target: productConstantsText1; color: "black"}
+                        PropertyChanges { target: productConstantsText2; color: "black"}
+                        PropertyChanges { target: productConstantsText3; color: "black"}
+                        PropertyChanges { target: productConstantsText4; color: "black"}
+                        PropertyChanges { target: productConstantsText5; color: "black"}
+                        PropertyChanges { target: productConstantsText6; color: "black"}
+                        PropertyChanges { target: productConstantsText7; color: "black"}
+                        PropertyChanges { target: productConstantsText8; color: "black"}
+                        PropertyChanges { target: productConstantsText10; color: "black"}
+                        PropertyChanges { target: productConstantsText11; color: "black"}
+                        PropertyChanges { target: k4TextInput; readOnly: false}
+                        PropertyChanges { target: k4TextInput; color: "black"}
+                        PropertyChanges { target: k_4TextInput; readOnly: false}
+                        PropertyChanges { target: k_4TextInput; color: "black"}
+                        PropertyChanges { target: kpConstant; color: "black"}
+                        PropertyChanges { target: kpFractionLine; color: "black"}
+                        PropertyChanges { target: kpFractionLine; border.color: "black"}
                     },
                     State {
-                        name: "DISABLED"
+                        name: "PRODUCT_INHIBITION_DISABLED"
                         PropertyChanges { target: productCheckbox; color: "white"}
                         PropertyChanges { target: productText1; color: "grey"}
                         PropertyChanges { target: productText2; color: "grey"}
                         PropertyChanges { target: productText3; color: "grey"}
                         PropertyChanges { target: productText4; color: "grey"}
+                        PropertyChanges { target: productConstantsText1; color: "grey"}
+                        PropertyChanges { target: productConstantsText2; color: "grey"}
+                        PropertyChanges { target: productConstantsText3; color: "grey"}
+                        PropertyChanges { target: productConstantsText4; color: "grey"}
+                        PropertyChanges { target: productConstantsText5; color: "grey"}
+                        PropertyChanges { target: productConstantsText6; color: "grey"}
+                        PropertyChanges { target: productConstantsText7; color: "grey"}
+                        PropertyChanges { target: productConstantsText8; color: "grey"}
+                        PropertyChanges { target: productConstantsText10; color: "grey"}
+                        PropertyChanges { target: productConstantsText11; color: "grey"}
+                        PropertyChanges { target: k4TextInput; readOnly: true}
+                        PropertyChanges { target: k4TextInput; color: "grey"}
+                        PropertyChanges { target: k_4TextInput; readOnly: true}
+                        PropertyChanges { target: k_4TextInput; color: "grey"}
+                        PropertyChanges { target: kpConstant; color: "grey"}
+                        PropertyChanges { target: kpFractionLine; color: "grey"}
+                        PropertyChanges { target: kpFractionLine; border.color: "grey"}
                     }
                 ]
 
@@ -866,10 +934,10 @@ Rectangle {
                     id: productCheckboxMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if (productCheckbox.state == "ENABLED")
-                            productCheckbox.state = "DISABLED"
+                        if (productCheckbox.state == "PRODUCT_INHIBITION_ENABLED")
+                            productCheckbox.state = "PRODUCT_INHIBITION_DISABLED"
                         else
-                            productCheckbox.state = "ENABLED"
+                            productCheckbox.state = "PRODUCT_INHIBITION_ENABLED"
                     }
                 }
             }
