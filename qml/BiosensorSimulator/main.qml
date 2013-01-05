@@ -3,8 +3,8 @@ import QtQuick 1.1
 
 Rectangle {
     id: page
-    width: 800
-    height: 600
+    width: 1024
+    height: 768
     color: "#000000"
     state: "REACTIONS"
 
@@ -202,11 +202,17 @@ Rectangle {
 
         Rectangle {
             id: kineticsRectangle
-            x: 0
-            y: 42
             width: 649
             height: 518
             color: "#00000000"
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 30
 
             QtObject {
                 id: constantCalculator
@@ -650,11 +656,16 @@ Rectangle {
 
         Rectangle {
             id: reactionRectangle
-            x: 0
-            y: 30
             width: 649
-            height: 518
             color: "#00000000"
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 30
 
             Text {
                 id: mainText3
@@ -951,6 +962,218 @@ Rectangle {
             }
 
         }
+
+        Rectangle {
+            id: geometryRectangle
+            width: 649
+            height: 518
+            color: "#00000000"
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 30
+            property variant layers
+
+            ListModel {
+                id: layersModel
+
+                ListElement {
+                    layerState: "ELECTRODE"
+                    layerId: 0
+                }
+
+                ListElement {
+                    layerState: "BULK_SOLUTION"
+                    layerId: 1
+                }
+            }
+
+            Component {
+                id: layersDelegate
+                Column {
+                    id: layersDelegateRow
+                    Component.onCompleted: {
+                        var component = Qt.createComponent("SandwichComponent.qml");
+                        var layer = component.createObject(layersDelegateRow, {"state": layerState, "layerId": layerId});
+                    }
+                }
+            }
+
+            ListView {
+                id: layers
+                x: 20
+                y: 20
+                width: 609
+                height: 447
+                interactive: false
+                contentHeight: 0
+                anchors.right: parent.right
+                anchors.rightMargin: 20
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 51
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                model: layersModel
+                delegate: layersDelegate
+            }
+
+            Rectangle {
+                id: addEnzymeButton
+                x: 311
+                y: 478
+                width: 150
+                height: 30
+                color: "#d3d3d3"
+                radius: 6
+                smooth: true
+                border.color: "#000000"
+                Text {
+                    id: addEnzymeButtonText
+                    x: 44
+                    y: 15
+                    text: qsTr("Add enzyme layer")
+                    font.pixelSize: 12
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                MouseArea {
+                    id: addEnzymeButtonMouseArea
+                    x: 0
+                    y: 0
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                    anchors.bottomMargin: 0
+                    anchors.leftMargin: 0
+                    onEntered: addEnzymeButton.color = "#6495ed"
+                    onExited: addEnzymeButton.color = "#d3d3d3"
+                    onClicked: {
+                        var maxLayerId = 0;
+                        for (var i = 0; i < layersModel.count; i++) {
+                            if (layersModel.get(i).layerId > maxLayerId) {
+                                maxLayerId = layersModel.get(i).layerId;
+                            }
+                        }
+                        layersModel.insert(layersModel.count - 1, {layerState: "ENZYME_LAYER", layerId: maxLayerId + 1})
+                    }
+                }
+                anchors.bottom: parent.bottom
+                anchors.rightMargin: 188
+                anchors.bottomMargin: 10
+                anchors.right: parent.right
+            }
+
+            Rectangle {
+                id: addDiffusiveButton
+                x: 477
+                y: 478
+                width: 150
+                height: 30
+                color: "#d3d3d3"
+                radius: 6
+                smooth: true
+                border.color: "#000000"
+                Text {
+                    id: addDiffusiveButtonText
+                    x: 44
+                    y: 15
+                    text: qsTr("Add diffusive layer")
+                    font.pixelSize: 12
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                MouseArea {
+                    id: addDiffusiveButtonMouseArea
+                    x: 0
+                    y: 0
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                    anchors.bottomMargin: 0
+                    anchors.leftMargin: 0
+                    onEntered: addDiffusiveButton.color = "#6495ed"
+                    onExited: addDiffusiveButton.color = "#d3d3d3"
+                    onClicked: {
+                        var maxLayerId = 0;
+                        for (var i = 0; i < layersModel.count; i++) {
+                            if (layersModel.get(i).layerId > maxLayerId) {
+                                maxLayerId = layersModel.get(i).layerId;
+                            }
+                        }
+                        layersModel.insert(layersModel.count - 1, {layerState: "DIFFUSIVE_LAYER", layerId: maxLayerId + 1});
+                    }
+                }
+                anchors.bottom: parent.bottom
+                anchors.rightMargin: 22
+                anchors.bottomMargin: 10
+                anchors.right: parent.right
+            }
+
+        }
+
+        Rectangle {
+            id: calculationsRectangle
+            width: 200
+            color: "#00000000"
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 30
+
+            Text {
+                id: responseTimeText
+                x: 45
+                y: 15
+                text: qsTr("Response time")
+                font.pixelSize: 20
+            }
+
+            Text {
+                id: mainConstantsText11
+                x: 45
+                y: 52
+                text: qsTr("t<sub>r</sub> = ")
+                font.pixelSize: 18
+            }
+
+            TextInput {
+                id: k_1TextInput1
+                x: 76
+                y: 52
+                width: 72
+                height: 21
+                text: qsTr("0")
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+            }
+
+            Text {
+                id: mainConstantsText14
+                x: 148
+                y: 52
+                width: 46
+                height: 21
+                text: qsTr("s")
+                font.pixelSize: 18
+            }
+        }
     }
 
     Rectangle {
@@ -1032,6 +1255,14 @@ Rectangle {
                         target: kineticsRectangle
                         visible: false
             }
+            PropertyChanges {
+                        target: geometryRectangle
+                        visible: false
+            }
+            PropertyChanges {
+                        target: calculationsRectangle
+                        visible: false
+            }
         },
         State {
             name: "KINETICS"
@@ -1066,6 +1297,14 @@ Rectangle {
             PropertyChanges {
                         target: kineticsRectangle
                         visible: true
+            }
+            PropertyChanges {
+                        target: geometryRectangle
+                        visible: false
+            }
+            PropertyChanges {
+                        target: calculationsRectangle
+                        visible: false
             }
         },
         State {
@@ -1102,6 +1341,14 @@ Rectangle {
                         target: kineticsRectangle
                         visible: false
             }
+            PropertyChanges {
+                        target: geometryRectangle
+                        visible: true
+            }
+            PropertyChanges {
+                        target: calculationsRectangle
+                        visible: false
+            }
         },
         State {
             name: "CALCULATIONS"
@@ -1136,6 +1383,14 @@ Rectangle {
             PropertyChanges {
                         target: kineticsRectangle
                         visible: false
+            }
+            PropertyChanges {
+                        target: geometryRectangle
+                        visible: false
+            }
+            PropertyChanges {
+                        target: calculationsRectangle
+                        visible: true
             }
         }
     ]
