@@ -1217,6 +1217,9 @@ Rectangle {
                 hoverEnabled: true
                 onEntered: runButton.color = "#6495ed"
                 onExited: runButton.color = "#d3d3d3"
+                onClicked: {
+                    calculatorRunner.runCalculator(1, 2);
+                }
             }
         }
     }
