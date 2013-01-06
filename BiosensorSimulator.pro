@@ -41,4 +41,5 @@ qtcAddDeployment()
 LIBS += -ldl
 
 HEADERS += \
-    calculatorrunner.h
+    calculatorrunner.h \
+    biosensorinformation.h

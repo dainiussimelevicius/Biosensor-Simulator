@@ -5,7 +5,7 @@ Rectangle {
     id: abstractLayerComponent
     x: 0
     y: 0
-    width: 800
+    width: 900
     height: 40
     color: "#00000000"
     state: "ENZYME_LAYER"
@@ -15,7 +15,7 @@ Rectangle {
         id: abstractLayerRectangle
         x: 0
         y: 0
-        width: 200
+        width: 120
         height: 40
         color: "#ffffff"
         border.color: "#000000"
@@ -31,34 +31,40 @@ Rectangle {
     }
 
     Rectangle {
-        id: innerLayerInput
+        id: diffusiveLayerInput
+        x: 200
+        y: 0
         color: "#00000000"
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
-        anchors.leftMargin: 200
+        anchors.leftMargin: 120
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
 
         Text {
-            id: productDiffusionUnits
-            x: 315
-            y: 10
-            width: 34
+            id: diffProductDiffusionUnits
+            x: 297
+            y: 9
+            width: 64
             height: 21
             text: qsTr("μm<sup>2</sup> ∙ s<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         TextInput {
-            id: productDiffusionInput
-            x: 242
-            y: 10
-            width: 72
+            id: diffProductDiffusionInput
+            x: 227
+            y: 9
+            width: 70
             height: 21
             text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
             validator: DoubleValidator {
                 bottom: 0
@@ -67,30 +73,35 @@ Rectangle {
         }
 
         Text {
-            id: productDiffusionText
-            x: 200
+            id: diffProductDiffusionText
+            x: 189
             y: 10
             text: qsTr("D<sub>P</sub> = ")
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         Text {
-            id: substrateDiffusionUnits
-            x: 125
-            y: 10
-            width: 34
+            id: diffSubstrateDiffusionUnits
+            x: 114
+            y: 9
+            width: 65
             height: 21
             text: qsTr("μm<sup>2</sup> ∙ s<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         TextInput {
-            id: substrateDiffusionInput
-            x: 53
-            y: 10
-            width: 72
+            id: diffSubstrateDiffusionInput
+            x: 42
+            y: 9
+            width: 70
             height: 21
             text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
             validator: DoubleValidator {
                 bottom: 0
@@ -99,38 +110,45 @@ Rectangle {
         }
 
         Text {
-            id: substrateDiffusionText
-            x: 10
-            y: 10
+            id: diffSubstrateDiffusionText
+            x: 5
+            y: 9
             text: qsTr("D<sub>S</sub> = ")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         Text {
-            id: layerThicknessUnits
-            x: 502
-            y: 10
-            width: 34
+            id: diffLayerThicknessUnits
+            x: 475
+            y: 9
+            width: 26
             height: 21
             text: qsTr("μm")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         Text {
-            id: layerThicknessText
-            x: 391
+            id: diffLayerThicknessText
+            x: 375
             y: 10
             text: qsTr("d = ")
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         TextInput {
-            id: layerThicknessInput
-            x: 424
-            y: 10
-            width: 72
+            id: diffLayerThicknessInput
+            x: 405
+            y: 9
+            width: 70
             height: 21
             text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
             validator: DoubleValidator {
                 bottom: 0
@@ -139,8 +157,8 @@ Rectangle {
         }
 
         Image {
-            id: removeLayerButton
-            x: 542
+            id: diffRemoveLayerButton
+            x: 509
             y: 5
             width: 20
             height: 20
@@ -148,7 +166,7 @@ Rectangle {
             source: "../../red_cross.png"
 
             MouseArea {
-                id: removeLayerMouseArea
+                id: diffRemoveLayerMouseArea
                 anchors.fill: parent
                 onClicked: {
                     for (var i = 0; i < layersModel.count; i++) {
@@ -168,7 +186,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
-        anchors.leftMargin: 200
+        anchors.leftMargin: 120
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.top: parent.top
@@ -176,19 +194,22 @@ Rectangle {
 
         Text {
             id: substrateConcentrationText
-            x: 10
+            x: 5
             y: 10
             text: qsTr("[S] = ")
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         TextInput {
             id: substrateConcentrationInput
-            x: 53
-            y: 10
-            width: 72
+            x: 45
+            y: 9
+            width: 67
             height: 21
             text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
             validator: DoubleValidator {
                 bottom: 0
@@ -198,29 +219,34 @@ Rectangle {
 
         Text {
             id: substrateConcentrationUnits
-            x: 125
-            y: 10
-            width: 34
+            x: 112
+            y: 9
+            width: 59
             height: 21
             text: qsTr("mol ∙ l<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         Text {
             id: productConcentrationText
-            x: 200
+            x: 189
             y: 10
             text: qsTr("[P] = ")
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
 
         TextInput {
             id: productConcentrationInput
-            x: 242
-            y: 10
-            width: 72
+            x: 230
+            y: 9
+            width: 67
             height: 21
             text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
             validator: DoubleValidator {
                 bottom: 0
@@ -230,13 +256,206 @@ Rectangle {
 
         Text {
             id: productConcentrationUnits
-            x: 315
-            y: 10
-            width: 34
+            x: 297
+            y: 9
+            width: 60
             height: 21
             text: qsTr("mol ∙ l<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
         }
+    }
+
+    Rectangle {
+        id: enzymeLayerInput
+        x: 200
+        y: 5
+        color: "#00000000"
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        Text {
+            id: enzProductDiffusionUnits
+            x: 297
+            y: 9
+            width: 65
+            height: 21
+            text: qsTr("μm<sup>2</sup> ∙ s<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        TextInput {
+            id: enzProductDiffusionInput
+            x: 227
+            y: 9
+            width: 70
+            height: 21
+            text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+            validator: DoubleValidator {
+                bottom: 0
+            }
+            focus: true
+        }
+
+        Text {
+            id: enzProductDiffusionText
+            x: 189
+            y: 9
+            text: qsTr("D<sub>P</sub> = ")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        Text {
+            id: enzSubstrateDiffusionUnits
+            x: 112
+            y: 9
+            width: 65
+            height: 21
+            text: qsTr("μm<sup>2</sup> ∙ s<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        TextInput {
+            id: enzSubstrateDiffusionInput
+            x: 42
+            y: 9
+            width: 70
+            height: 21
+            text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+            validator: DoubleValidator {
+                bottom: 0
+            }
+            focus: true
+        }
+
+        Text {
+            id: enzSubstrateDiffusionText
+            x: 5
+            y: 10
+            text: qsTr("D<sub>S</sub> = ")
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        Text {
+            id: enzLayerThicknessUnits
+            x: 475
+            y: 9
+            width: 34
+            height: 21
+            text: qsTr("μm")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        Text {
+            id: enzLayerThicknessText
+            x: 375
+            y: 9
+            text: qsTr("d = ")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        TextInput {
+            id: enzLayerThicknessInput
+            x: 405
+            y: 9
+            width: 70
+            height: 21
+            text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+            validator: DoubleValidator {
+                bottom: 0
+            }
+            focus: true
+        }
+
+        Image {
+            id: enzRemoveLayerButton
+            x: 694
+            y: 10
+            width: 20
+            height: 20
+            anchors.verticalCenterOffset: 0
+            MouseArea {
+                id: enzRemoveLayerMouseArea
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.left: parent.left
+                onClicked: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.remove(i);
+                            break;
+                        }
+                    }
+                }
+            }
+            source: "../../red_cross.png"
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Text {
+            id: enzEnzymeConcentrationUnits
+            x: 626
+            y: 9
+            width: 60
+            height: 21
+            text: qsTr("mol ∙ l<sup>-1</sup>")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        Text {
+            id: enzEnzymeConcentrationText
+            x: 509
+            y: 9
+            text: qsTr("[E<sub>0</sub>] = ")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+        }
+
+        TextInput {
+            id: enzEnzymeConcentrationInput
+            x: 556
+            y: 9
+            width: 70
+            height: 21
+            text: qsTr("0")
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pixelSize: 18
+            validator: DoubleValidator {
+                bottom: 0
+            }
+            focus: true
+        }
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
+        anchors.right: parent.right
+        anchors.leftMargin: 120
+        anchors.left: parent.left
     }
     states: [
         State {
@@ -250,8 +469,12 @@ Rectangle {
                 color: "lightsteelblue"
             }
             PropertyChanges {
-                        target: innerLayerInput
+                        target: enzymeLayerInput
                         visible: true
+            }
+            PropertyChanges {
+                        target: diffusiveLayerInput
+                        visible: false
             }
             PropertyChanges {
                         target: bulkSolutionInput
@@ -269,7 +492,11 @@ Rectangle {
                 color: "darkseagreen"
             }
             PropertyChanges {
-                        target: innerLayerInput
+                        target: enzymeLayerInput
+                        visible: false
+            }
+            PropertyChanges {
+                        target: diffusiveLayerInput
                         visible: true
             }
             PropertyChanges {
@@ -288,7 +515,11 @@ Rectangle {
                 color: "white"
             }
             PropertyChanges {
-                        target: innerLayerInput
+                        target: enzymeLayerInput
+                        visible: false
+            }
+            PropertyChanges {
+                        target: diffusiveLayerInput
                         visible: false
             }
             PropertyChanges {
@@ -301,13 +532,17 @@ Rectangle {
             PropertyChanges {
                 target: abstractLayerText
                 text: qsTr("Electrode")
-            }
+            }            
             PropertyChanges {
                 target: abstractLayerRectangle
                 color: "#625e5e"
             }
             PropertyChanges {
-                        target: innerLayerInput
+                        target: enzymeLayerInput
+                        visible: false
+            }
+            PropertyChanges {
+                        target: diffusiveLayerInput
                         visible: false
             }
             PropertyChanges {
