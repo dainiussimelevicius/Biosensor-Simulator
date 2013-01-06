@@ -227,7 +227,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText1
+                id: k1ConstantText
                 x: 39
                 y: 53
                 text: qsTr("k<sub>1</sub> = ")
@@ -254,17 +254,17 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText4
+                id: k1UnitsText
                 x: 154
                 y: 53
-                width: 34
+                width: 90
                 height: 21
                 text: qsTr("mol<sup>-1</sup> ∙ l ∙ s<sup>-1</sup>")
                 font.pixelSize: 18
             }
 
             Text {
-                id: mainConstantsText2
+                id: k_1ConstantText
                 x: 39
                 y: 87
                 text: qsTr("k<sub>-1</sub> = ")
@@ -285,7 +285,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText5
+                id: k_1UnitsText
                 x: 154
                 y: 87
                 width: 34
@@ -295,7 +295,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText3
+                id: k2ConstantText
                 x: 39
                 y: 121
                 text: qsTr("k<sub>2</sub> = ")
@@ -316,7 +316,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText6
+                id: k2UnitsText
                 x: 154
                 y: 121
                 width: 34
@@ -326,7 +326,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText7
+                id: kMConstantText
                 x: 305
                 y: 87
                 text: qsTr("K<sub>M</sub> = ")
@@ -344,7 +344,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText8
+                id: kMNumeratorText
                 x: 356
                 y: 77
                 text: qsTr("k<sub>-1</sub> + k<sub>2</sub>")
@@ -352,7 +352,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText9
+                id: kMDenominatorText
                 x: 375
                 y: 100
                 text: qsTr("k<sub>1</sub>")
@@ -360,7 +360,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText10
+                id: kMEqualText
                 x: 424
                 y: 87
                 text: qsTr(" = ")
@@ -368,7 +368,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText12
+                id: kMUnitsText
                 x: 531
                 y: 87
                 text: qsTr("mol ∙ l<sup>-1</sup>")
@@ -386,7 +386,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText1
+                id: k3ConstantText
                 x: 39
                 y: 204
                 text: qsTr("k<sub>3</sub> = ")
@@ -407,17 +407,17 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText3
+                id: k3UnitsText
                 x: 154
                 y: 204
-                width: 34
+                width: 90
                 height: 21
                 text: qsTr("mol<sup>-1</sup> ∙ l ∙ s<sup>-1</sup>")
                 font.pixelSize: 18
             }
 
             Text {
-                id: substrateConstantsText2
+                id: k_3ConstantText
                 x: 39
                 y: 238
                 text: qsTr("k<sub>-3</sub> = ")
@@ -438,7 +438,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText4
+                id: k_3UnitsText
                 x: 154
                 y: 238
                 width: 34
@@ -448,7 +448,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText5
+                id: kSConstantText
                 x: 305
                 y: 222
                 text: qsTr("K<sub>s</sub> = ")
@@ -466,7 +466,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText6
+                id: kSNumeratorText
                 x: 356
                 y: 212
                 text: qsTr("k<sub>-3</sub>")
@@ -474,7 +474,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText7
+                id: kSDenominatorText
                 x: 356
                 y: 233
                 text: qsTr("k<sub>3</sub>")
@@ -482,7 +482,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText8
+                id: kSEqualText
                 x: 391
                 y: 222
                 text: qsTr(" = ")
@@ -490,7 +490,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText10
+                id: kSUnitsText
                 x: 499
                 y: 222
                 text: qsTr("mol ∙ l<sup>-1</sup>")
@@ -508,7 +508,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText1
+                id: k4ConstantText
                 x: 39
                 y: 316
                 text: qsTr("k<sub>4</sub> = ")
@@ -529,17 +529,17 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText3
+                id: k4UnitsText
                 x: 154
                 y: 316
-                width: 34
+                width: 90
                 height: 21
                 text: qsTr("mol<sup>-1</sup> ∙ l ∙ s<sup>-1</sup>")
                 font.pixelSize: 18
             }
 
             Text {
-                id: productConstantsText2
+                id: k_4ConstantText
                 x: 39
                 y: 350
                 text: qsTr("k<sub>-4</sub> = ")
@@ -560,7 +560,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText4
+                id: k_4UnitsText
                 x: 154
                 y: 350
                 width: 34
@@ -570,7 +570,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText5
+                id: kPConstantText
                 x: 305
                 y: 334
                 text: qsTr("K<sub>p</sub> = ")
@@ -588,7 +588,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText6
+                id: kPNumeratorText
                 x: 356
                 y: 324
                 text: qsTr("k<sub>-4</sub>")
@@ -596,7 +596,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText7
+                id: kPDenominatorText
                 x: 356
                 y: 345
                 text: qsTr("k<sub>4</sub>")
@@ -604,7 +604,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText8
+                id: kPEqualText
                 x: 391
                 y: 334
                 text: qsTr(" = ")
@@ -612,7 +612,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText10
+                id: kPUnitsText
                 x: 499
                 y: 334
                 text: qsTr("mol ∙ l<sup>-1</sup>")
@@ -630,7 +630,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText13
+                id: mainConstantsText
                 x: 39
                 y: 15
                 text: qsTr("Reaction rate constants of Michaelis-Menten equation")
@@ -638,7 +638,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateConstantsText11
+                id: substrateConstantsText
                 x: 39
                 y: 163
                 text: qsTr("Reaction rate constants of substrate inhibition equations")
@@ -646,7 +646,7 @@ Rectangle {
             }
 
             Text {
-                id: productConstantsText11
+                id: productConstantsText
                 x: 39
                 y: 277
                 text: qsTr("Reaction rate constants of product inhibition equations")
@@ -668,7 +668,7 @@ Rectangle {
             anchors.topMargin: 30
 
             Text {
-                id: mainText3
+                id: k1Const
                 x: 135
                 y: 61
                 text: qsTr("k<sub>1</sub>")
@@ -676,7 +676,7 @@ Rectangle {
             }
 
             Text {
-                id: mainText2
+                id: mainReaction
                 x: 45
                 y: 77
                 text: qsTr("E + S   ⇄   ES   →   E + P")
@@ -684,7 +684,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateText2
+                id: substrateInhibitionReaction
                 x: 45
                 y: 206
                 text: qsTr("ES + S   ⇄   ESS")
@@ -692,7 +692,7 @@ Rectangle {
             }
 
             Text {
-                id: productText2
+                id: productInhibitionReaction
                 x: 45
                 y: 337
                 text: qsTr("E + P   ⇄   EP")
@@ -700,7 +700,7 @@ Rectangle {
             }
 
             Text {
-                id: mainText1
+                id: mainEquationText
                 x: 45
                 y: 15
                 text: qsTr("Michaelis-Menten equation")
@@ -708,7 +708,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateText1
+                id: substrateInhibitionText
                 x: 45
                 y: 155
                 text: qsTr("Equation of substrate inhibition")
@@ -716,7 +716,7 @@ Rectangle {
             }
 
             Text {
-                id: productText1
+                id: productInhibitionText
                 x: 45
                 y: 285
                 text: qsTr("Equation of product inhibition")
@@ -724,31 +724,31 @@ Rectangle {
             }
 
             Text {
-                id: legendText1
+                id: legendSubstrateText
                 x: 45
-                y: 410
+                y: 551
                 text: qsTr("S - substrate")
                 font.pixelSize: 16
             }
 
             Text {
-                id: legendText2
+                id: legendEnzymeText
                 x: 45
-                y: 437
+                y: 578
                 text: qsTr("E - enzyme")
                 font.pixelSize: 16
             }
 
             Text {
-                id: legendText3
+                id: legendProductText
                 x: 45
-                y: 466
+                y: 607
                 text: qsTr("P - product")
                 font.pixelSize: 16
             }
 
             Text {
-                id: mainText4
+                id: k_1Const
                 x: 135
                 y: 108
                 text: qsTr("k<sub>-1</sub>")
@@ -756,7 +756,7 @@ Rectangle {
             }
 
             Text {
-                id: mainText5
+                id: k2Const
                 x: 233
                 y: 61
                 text: qsTr("k<sub>2</sub>")
@@ -764,7 +764,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateText3
+                id: k3Const
                 x: 149
                 y: 190
                 text: qsTr("k<sub>3</sub>")
@@ -772,7 +772,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateText4
+                id: k_3Const
                 x: 149
                 y: 237
                 text: qsTr("k<sub>-3</sub>")
@@ -780,7 +780,7 @@ Rectangle {
             }
 
             Text {
-                id: productText3
+                id: k4Const
                 x: 135
                 y: 321
                 text: qsTr("k<sub>4</sub>")
@@ -788,7 +788,7 @@ Rectangle {
             }
 
             Text {
-                id: productText4
+                id: k_4Const
                 x: 135
                 y: 368
                 text: qsTr("k<sub>-4</sub>")
@@ -809,20 +809,20 @@ Rectangle {
                     State {
                         name: "SUBSTRATE_INHIBITION_ENABLED"
                         PropertyChanges { target: substrateCheckbox; color: "green"}
-                        PropertyChanges { target: substrateText1; color: "black"}
-                        PropertyChanges { target: substrateText2; color: "black"}
-                        PropertyChanges { target: substrateText3; color: "black"}
-                        PropertyChanges { target: substrateText4; color: "black"}
-                        PropertyChanges { target: substrateConstantsText1; color: "black"}
-                        PropertyChanges { target: substrateConstantsText2; color: "black"}
-                        PropertyChanges { target: substrateConstantsText3; color: "black"}
-                        PropertyChanges { target: substrateConstantsText4; color: "black"}
-                        PropertyChanges { target: substrateConstantsText5; color: "black"}
-                        PropertyChanges { target: substrateConstantsText6; color: "black"}
-                        PropertyChanges { target: substrateConstantsText7; color: "black"}
-                        PropertyChanges { target: substrateConstantsText8; color: "black"}
-                        PropertyChanges { target: substrateConstantsText10; color: "black"}
-                        PropertyChanges { target: substrateConstantsText11; color: "black"}
+                        PropertyChanges { target: substrateInhibitionText; color: "black"}
+                        PropertyChanges { target: substrateInhibitionReaction; color: "black"}
+                        PropertyChanges { target: k3Const; color: "black"}
+                        PropertyChanges { target: k_3Const; color: "black"}
+                        PropertyChanges { target: k3ConstantText; color: "black"}
+                        PropertyChanges { target: k_3ConstantText; color: "black"}
+                        PropertyChanges { target: k3UnitsText; color: "black"}
+                        PropertyChanges { target: k_3UnitsText; color: "black"}
+                        PropertyChanges { target: kSConstantText; color: "black"}
+                        PropertyChanges { target: kSNumeratorText; color: "black"}
+                        PropertyChanges { target: kSDenominatorText; color: "black"}
+                        PropertyChanges { target: kSEqualText; color: "black"}
+                        PropertyChanges { target: kSUnitsText; color: "black"}
+                        PropertyChanges { target: substrateConstantsText; color: "black"}
                         PropertyChanges { target: k3TextInput; readOnly: false}
                         PropertyChanges { target: k3TextInput; color: "black"}
                         PropertyChanges { target: k_3TextInput; readOnly: false}
@@ -834,20 +834,20 @@ Rectangle {
                     State {
                         name: "SUBSTRATE_INHIBITION_DISABLED"
                         PropertyChanges { target: substrateCheckbox; color: "white"}
-                        PropertyChanges { target: substrateText1; color: "grey"}
-                        PropertyChanges { target: substrateText2; color: "grey"}
-                        PropertyChanges { target: substrateText3; color: "grey"}
-                        PropertyChanges { target: substrateText4; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText1; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText2; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText3; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText4; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText5; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText6; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText7; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText8; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText10; color: "grey"}
-                        PropertyChanges { target: substrateConstantsText11; color: "grey"}
+                        PropertyChanges { target: substrateInhibitionText; color: "grey"}
+                        PropertyChanges { target: substrateInhibitionReaction; color: "grey"}
+                        PropertyChanges { target: k3Const; color: "grey"}
+                        PropertyChanges { target: k_3Const; color: "grey"}
+                        PropertyChanges { target: k3ConstantText; color: "grey"}
+                        PropertyChanges { target: k_3ConstantText; color: "grey"}
+                        PropertyChanges { target: k3UnitsText; color: "grey"}
+                        PropertyChanges { target: k_3UnitsText; color: "grey"}
+                        PropertyChanges { target: kSConstantText; color: "grey"}
+                        PropertyChanges { target: kSNumeratorText; color: "grey"}
+                        PropertyChanges { target: kSDenominatorText; color: "grey"}
+                        PropertyChanges { target: kSEqualText; color: "grey"}
+                        PropertyChanges { target: kSUnitsText; color: "grey"}
+                        PropertyChanges { target: substrateConstantsText; color: "grey"}
                         PropertyChanges { target: k3TextInput; readOnly: true}
                         PropertyChanges { target: k3TextInput; color: "grey"}
                         PropertyChanges { target: k_3TextInput; readOnly: true}
@@ -871,7 +871,7 @@ Rectangle {
             }
 
             Text {
-                id: substrateText5
+                id: includeSubstrateInhibitionText
                 x: 389
                 y: 217
                 text: qsTr("Include substrate inhibition")
@@ -892,20 +892,20 @@ Rectangle {
                     State {
                         name: "PRODUCT_INHIBITION_ENABLED"
                         PropertyChanges { target: productCheckbox; color: "green"}
-                        PropertyChanges { target: productText1; color: "black"}
-                        PropertyChanges { target: productText2; color: "black"}
-                        PropertyChanges { target: productText3; color: "black"}
-                        PropertyChanges { target: productText4; color: "black"}
-                        PropertyChanges { target: productConstantsText1; color: "black"}
-                        PropertyChanges { target: productConstantsText2; color: "black"}
-                        PropertyChanges { target: productConstantsText3; color: "black"}
-                        PropertyChanges { target: productConstantsText4; color: "black"}
-                        PropertyChanges { target: productConstantsText5; color: "black"}
-                        PropertyChanges { target: productConstantsText6; color: "black"}
-                        PropertyChanges { target: productConstantsText7; color: "black"}
-                        PropertyChanges { target: productConstantsText8; color: "black"}
-                        PropertyChanges { target: productConstantsText10; color: "black"}
-                        PropertyChanges { target: productConstantsText11; color: "black"}
+                        PropertyChanges { target: productInhibitionText; color: "black"}
+                        PropertyChanges { target: productInhibitionReaction; color: "black"}
+                        PropertyChanges { target: k4Const; color: "black"}
+                        PropertyChanges { target: k_4Const; color: "black"}
+                        PropertyChanges { target: k4ConstantText; color: "black"}
+                        PropertyChanges { target: k_4ConstantText; color: "black"}
+                        PropertyChanges { target: k4UnitsText; color: "black"}
+                        PropertyChanges { target: k_4UnitsText; color: "black"}
+                        PropertyChanges { target: kPConstantText; color: "black"}
+                        PropertyChanges { target: kPNumeratorText; color: "black"}
+                        PropertyChanges { target: kPDenominatorText; color: "black"}
+                        PropertyChanges { target: kPEqualText; color: "black"}
+                        PropertyChanges { target: kPUnitsText; color: "black"}
+                        PropertyChanges { target: productConstantsText; color: "black"}
                         PropertyChanges { target: k4TextInput; readOnly: false}
                         PropertyChanges { target: k4TextInput; color: "black"}
                         PropertyChanges { target: k_4TextInput; readOnly: false}
@@ -917,20 +917,20 @@ Rectangle {
                     State {
                         name: "PRODUCT_INHIBITION_DISABLED"
                         PropertyChanges { target: productCheckbox; color: "white"}
-                        PropertyChanges { target: productText1; color: "grey"}
-                        PropertyChanges { target: productText2; color: "grey"}
-                        PropertyChanges { target: productText3; color: "grey"}
-                        PropertyChanges { target: productText4; color: "grey"}
-                        PropertyChanges { target: productConstantsText1; color: "grey"}
-                        PropertyChanges { target: productConstantsText2; color: "grey"}
-                        PropertyChanges { target: productConstantsText3; color: "grey"}
-                        PropertyChanges { target: productConstantsText4; color: "grey"}
-                        PropertyChanges { target: productConstantsText5; color: "grey"}
-                        PropertyChanges { target: productConstantsText6; color: "grey"}
-                        PropertyChanges { target: productConstantsText7; color: "grey"}
-                        PropertyChanges { target: productConstantsText8; color: "grey"}
-                        PropertyChanges { target: productConstantsText10; color: "grey"}
-                        PropertyChanges { target: productConstantsText11; color: "grey"}
+                        PropertyChanges { target: productInhibitionText; color: "grey"}
+                        PropertyChanges { target: productInhibitionReaction; color: "grey"}
+                        PropertyChanges { target: k4Const; color: "grey"}
+                        PropertyChanges { target: k_4Const; color: "grey"}
+                        PropertyChanges { target: k4ConstantText; color: "grey"}
+                        PropertyChanges { target: k_4ConstantText; color: "grey"}
+                        PropertyChanges { target: k4UnitsText; color: "grey"}
+                        PropertyChanges { target: k_4UnitsText; color: "grey"}
+                        PropertyChanges { target: kPConstantText; color: "grey"}
+                        PropertyChanges { target: kPNumeratorText; color: "grey"}
+                        PropertyChanges { target: kPDenominatorText; color: "grey"}
+                        PropertyChanges { target: kPEqualText; color: "grey"}
+                        PropertyChanges { target: kPUnitsText; color: "grey"}
+                        PropertyChanges { target: productConstantsText; color: "grey"}
                         PropertyChanges { target: k4TextInput; readOnly: true}
                         PropertyChanges { target: k4TextInput; color: "grey"}
                         PropertyChanges { target: k_4TextInput; readOnly: true}
@@ -954,11 +954,57 @@ Rectangle {
             }
 
             Text {
-                id: productText5
+                id: includeProductInhibitionText
                 x: 389
                 y: 348
                 text: qsTr("Include product inhibition")
                 font.pixelSize: 12
+            }
+
+            Text {
+                id: chargeTransferText
+                x: 45
+                y: 414
+                text: qsTr("Electrones passed during a charge transfer on the electrode surface")
+                font.pixelSize: 20
+            }
+
+            Text {
+                id: electroneNumberText
+                x: 302
+                y: 462
+                text: qsTr("n<sub>e</sub> = ")
+                font.pixelSize: 18
+            }
+
+            TextInput {
+                id: electroneNumberInput
+                x: 345
+                y: 462
+                width: 26
+                height: 21
+                text: qsTr("1")
+                font.pixelSize: 18
+                validator: IntValidator {
+                    bottom: 1
+                }
+                focus: true
+            }
+
+            Text {
+                id: chargeTransferReaction
+                x: 45
+                y: 454
+                text: qsTr("P (+/-) n<sub>e</sub> e<sup>-</sup>   →   P<sub>final</sub>")
+                font.pixelSize: 30
+            }
+
+            Text {
+                id: legendProductFinalText
+                x: 45
+                y: 636
+                text: qsTr("P<sub>final</sub> - product of electrochemical reaction")
+                font.pixelSize: 16
             }
 
         }
@@ -1145,7 +1191,7 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText11
+                id: trText
                 x: 45
                 y: 52
                 text: qsTr("t<sub>r</sub> = ")
@@ -1153,7 +1199,7 @@ Rectangle {
             }
 
             TextInput {
-                id: k_1TextInput1
+                id: trTextInput
                 x: 76
                 y: 52
                 width: 72
@@ -1167,10 +1213,10 @@ Rectangle {
             }
 
             Text {
-                id: mainConstantsText14
+                id: trUnitsText
                 x: 148
                 y: 52
-                width: 46
+                width: 9
                 height: 21
                 text: qsTr("s")
                 font.pixelSize: 18
@@ -1192,9 +1238,6 @@ Rectangle {
                 height: 21
                 text: qsTr("output.dat")
                 font.pixelSize: 18
-                validator: DoubleValidator {
-                    bottom: 0
-                }
                 focus: true
             }
         }
