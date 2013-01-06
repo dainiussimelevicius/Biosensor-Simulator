@@ -1123,6 +1123,8 @@ Rectangle {
 
         Rectangle {
             id: calculationsRectangle
+            x: 0
+            y: 30
             width: 200
             color: "#00000000"
             anchors.right: parent.right
@@ -1172,6 +1174,28 @@ Rectangle {
                 height: 21
                 text: qsTr("s")
                 font.pixelSize: 18
+            }
+
+            Text {
+                id: outputFileText
+                x: 45
+                y: 97
+                text: qsTr("Output file")
+                font.pixelSize: 20
+            }
+
+            TextInput {
+                id: outputFileInput
+                x: 45
+                y: 133
+                width: 613
+                height: 21
+                text: qsTr("output.dat")
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
             }
         }
     }

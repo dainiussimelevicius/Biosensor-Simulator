@@ -9,7 +9,12 @@ class CalculatorRunner : public QObject
 {
     Q_OBJECT
 public:
+    CalculatorRunner(QObject* parent = 0);
+    ~CalculatorRunner();
     Q_INVOKABLE  void runCalculator(double v1, double v2);
+private:
+    void *calculatorLibHandle;
+    double (*meanFunction)(double, double);
 };
 
 #endif // CALCULATORRUNNER_H
