@@ -971,7 +971,7 @@ Rectangle {
 
             Text {
                 id: electroneNumberText
-                x: 302
+                x: 356
                 y: 462
                 text: qsTr("n<sub>e</sub> = ")
                 font.pixelSize: 18
@@ -979,7 +979,7 @@ Rectangle {
 
             TextInput {
                 id: electroneNumberInput
-                x: 345
+                x: 399
                 y: 462
                 width: 26
                 height: 21
@@ -1225,7 +1225,7 @@ Rectangle {
             Text {
                 id: outputFileText
                 x: 45
-                y: 97
+                y: 380
                 text: qsTr("Output file")
                 font.pixelSize: 20
             }
@@ -1233,13 +1233,178 @@ Rectangle {
             TextInput {
                 id: outputFileInput
                 x: 45
-                y: 133
+                y: 416
                 width: 613
                 height: 21
                 text: qsTr("output.dat")
                 font.pixelSize: 18
                 focus: true
             }
+
+            Rectangle {
+                id: explicitSchemeCheckbox
+                x: 45
+                y: 137
+                width: 20
+                height: 20
+                radius: 6
+                border.color: "#000000"
+                state: "EXPLICIT_SCHEME"
+
+                states: [
+                    State {
+                        name: "EXPLICIT_SCHEME"
+                        PropertyChanges { target: explicitSchemeCheckbox; color: "green"}
+                        PropertyChanges { target: implicitSchemeCheckbox; color: "white"}
+                    },
+                    State {
+                        name: "IMPLICIT_SCHEME"
+                        PropertyChanges { target: explicitSchemeCheckbox; color: "white"}
+                        PropertyChanges { target: implicitSchemeCheckbox; color: "green"}
+                    }
+                ]
+
+                MouseArea {
+                    id: explicitSchemeCheckboxMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if (explicitSchemeCheckbox.state == "IMPLICIT_SCHEME") {
+                            explicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
+                            implicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: implicitSchemeCheckbox
+                x: 45
+                y: 168
+                width: 20
+                height: 20
+                radius: 6
+                border.color: "#000000"
+                state: "EXPLICIT_SCHEME"
+
+                states: [
+                    State {
+                        name: "EXPLICIT_SCHEME"
+                        PropertyChanges { target: explicitSchemeCheckbox; color: "green"}
+                        PropertyChanges { target: implicitSchemeCheckbox; color: "white"}
+                    },
+                    State {
+                        name: "IMPLICIT_SCHEME"
+                        PropertyChanges { target: explicitSchemeCheckbox; color: "white"}
+                        PropertyChanges { target: implicitSchemeCheckbox; color: "green"}
+                    }
+                ]
+
+                MouseArea {
+                    id: implicitSchemeCheckboxMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if (implicitSchemeCheckbox.state == "EXPLICIT_SCHEME") {
+                            implicitSchemeCheckbox.state = "IMPLICIT_SCHEME"
+                            explicitSchemeCheckbox.state = "IMPLICIT_SCHEME";
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: explicitSchemeText
+                x: 76
+                y: 140
+                text: qsTr("Use explicit scheme")
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: implicitSchemeText
+                x: 76
+                y: 170
+                text: qsTr("Use implicit scheme")
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: schemeText
+                x: 45
+                y: 95
+                text: qsTr("The type of finite difference scheme")
+                font.pixelSize: 20
+            }
+
+            Text {
+                id: timeStepText
+                x: 45
+                y: 209
+                text: qsTr("Time step")
+                font.pixelSize: 20
+            }
+
+            Text {
+                id: timeStep
+                x: 45
+                y: 250
+                text: qsTr("Δt = ")
+                font.pixelSize: 18
+            }
+
+            TextInput {
+                id: timeStepInput
+                x: 83
+                y: 250
+                width: 72
+                height: 21
+                text: qsTr("0")
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+            }
+
+            Text {
+                id: timeStepUnits
+                x: 157
+                y: 250
+                width: 9
+                height: 21
+                text: qsTr("s")
+                font.pixelSize: 18
+            }
+
+            Text {
+                id: gridPointsText
+                x: 45
+                y: 294
+                text: qsTr("Grid points for a layer")
+                font.pixelSize: 20
+            }
+
+            Text {
+                id: gridPoints
+                x: 45
+                y: 339
+                text: qsTr("N = ")
+                font.pixelSize: 18
+            }
+
+            TextInput {
+                id: gridPointsInput
+                x: 83
+                y: 339
+                width: 72
+                height: 21
+                text: qsTr("200")
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+            }
+
         }
     }
 
