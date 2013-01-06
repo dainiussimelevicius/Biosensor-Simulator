@@ -1,9 +1,8 @@
 #ifndef CALCULATORRUNNER_H
 #define CALCULATORRUNNER_H
 
-#include <stdio.h>
 #include <QObject>
-#include <dlfcn.h>
+#include "biosensor_information.h"
 
 class CalculatorRunner : public QObject
 {
@@ -11,10 +10,12 @@ class CalculatorRunner : public QObject
 public:
     CalculatorRunner(QObject* parent = 0);
     ~CalculatorRunner();
-    Q_INVOKABLE  void runCalculator(double v1, double v2);
+    Q_INVOKABLE  void runCalculator();
 private:
+    struct BiosensorInformation * collectBiosensorInformation();
     void *calculatorLibHandle;
-    double (*meanFunction)(double, double);
+    void (*calculateFunction)(struct BiosensorInformation *);
+    struct BiosensorInformation * biosensorInformation;
 };
 
 #endif // CALCULATORRUNNER_H

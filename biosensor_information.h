@@ -38,6 +38,8 @@ struct BiosensorInformation {
     double s0;
     //Produkto koncentracija tirpale
     double p0;
+    //Biojutiklio sluoksnių skaičius
+    int noOfBiosensorLayers;
     //Biojutiklio sluoksnių masyvas
     struct LayerInformation *biosensorLayers;
 };
