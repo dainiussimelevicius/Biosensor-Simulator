@@ -4,13 +4,13 @@
 struct LayerInformation {
     //Laukas nurodo ar tai fermento sluoksnis
     int enzymeLayer;
-    //Fermento koncentracija
-    double e0;
     //Difuzijos koeficientai
     double Ds;
     double Dp;
     //Sluoksnio storis
     double d;
+    //Fermento koncentracija
+    double e0;
 };
 
 struct BiosensorInformation {
@@ -20,10 +20,12 @@ struct BiosensorInformation {
     int substrateInhibition;
     //Laukas nurodo ar vyksta produkto inhibicija
     int productInhibition;
+    //Reakcijos greičio konstanta k2
+    double k2;
     //Pusiausvyros konstantos
     double kM;
-    double kP;
     double kS;
+    double kP;
     //Žingsnis pagal laiką
     double timeStep;
     //Į kiek dalių dalinami sluoksniai

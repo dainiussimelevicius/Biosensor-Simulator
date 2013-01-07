@@ -244,12 +244,10 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: {
-                    if (!k1TextInput.acceptableInput)
-                        k1TextInput.color = "red";
-                    else
-                        k1TextInput.color = "black";
-                    kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                Keys.onReleased: {
+                    if (k1TextInput.acceptableInput) {
+                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                    }
                 }
             }
 
@@ -281,7 +279,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text); }
+                Keys.onReleased: {
+                    if (k_1TextInput.acceptableInput) {
+                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -312,7 +314,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text); }
+                Keys.onReleased: {
+                    if (k2TextInput.acceptableInput) {
+                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -403,7 +409,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text); }
+                Keys.onReleased: {
+                    if (k3TextInput.acceptableInput) {
+                        ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -434,7 +444,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text); }
+                Keys.onReleased: {
+                    if (k_3TextInput.acceptableInput) {
+                        ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -525,7 +539,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text); }
+                Keys.onReleased: {
+                    if (k4TextInput.acceptableInput) {
+                        kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -556,7 +574,11 @@ Rectangle {
                 font.pixelSize: 18
                 validator: DoubleValidator{bottom: 0;}
                 focus: true
-                onAccepted: { kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text); }
+                Keys.onReleased: {
+                    if (k_4TextInput.acceptableInput) {
+                        kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
+                    }
+                }
             }
 
             Text {
@@ -1035,16 +1057,18 @@ Rectangle {
                 ListElement {
                     layerState: "BULK_SOLUTION"
                     layerId: 1
+                    s0: 0
+                    p0: 0
                 }
             }
 
             Component {
                 id: layersDelegate
                 Column {
-                    id: layersDelegateRow
+                    id: layersDelegateColumn
                     Component.onCompleted: {
                         var component = Qt.createComponent("SandwichComponent.qml");
-                        var layer = component.createObject(layersDelegateRow, {"state": layerState, "layerId": layerId});
+                        var layer = component.createObject(layersDelegateColumn, {"state": layerState, "layerId": layerId});
                     }
                 }
             }
@@ -1108,7 +1132,7 @@ Rectangle {
                                 maxLayerId = layersModel.get(i).layerId;
                             }
                         }
-                        layersModel.insert(layersModel.count - 1, {layerState: "ENZYME_LAYER", layerId: maxLayerId + 1})
+                        layersModel.insert(layersModel.count - 1, {layerState: "ENZYME_LAYER", layerId: maxLayerId + 1, Ds: 0, Dp: 0, d: 0, e0: 0})
                     }
                 }
                 anchors.bottom: parent.bottom
@@ -1156,7 +1180,7 @@ Rectangle {
                                 maxLayerId = layersModel.get(i).layerId;
                             }
                         }
-                        layersModel.insert(layersModel.count - 1, {layerState: "DIFFUSIVE_LAYER", layerId: maxLayerId + 1});
+                        layersModel.insert(layersModel.count - 1, {layerState: "DIFFUSIVE_LAYER", layerId: maxLayerId + 1, Ds: 0, Dp: 0, d: 0});
                     }
                 }
                 anchors.bottom: parent.bottom
@@ -1199,7 +1223,7 @@ Rectangle {
             }
 
             TextInput {
-                id: trTextInput
+                id: responseTimeInput
                 x: 76
                 y: 52
                 width: 72
@@ -1450,7 +1474,55 @@ Rectangle {
                 onEntered: runButton.color = "#6495ed"
                 onExited: runButton.color = "#d3d3d3"
                 onClicked: {
-                    calculatorRunner.runCalculator(1, 2);
+                    var explicitScheme = explicitSchemeCheckbox.state == "EXPLICIT_SCHEME";
+                    var substrateInhibition = substrateCheckbox.state == "SUBSTRATE_INHIBITION_ENABLED";
+                    var productInhibition = productCheckbox.state == "PRODUCT_INHIBITION_ENABLED";
+                    var k2 = parseFloat(k2TextInput.text.replace(",", "."));
+                    var kM = parseFloat(kmConstant.text.replace(",", "."));
+                    var kS = parseFloat(ksConstant.text.replace(",", "."));
+                    var kP = parseFloat(kpConstant.text.replace(",", "."));
+                    var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
+                    var N = parseInt(gridPointsInput.text.replace(",", "."));
+                    var responseTime = parseFloat(responseTimeInput.text.replace(",", "."));
+                    var ne = parseInt(electroneNumberInput.text.replace(",", "."));
+                    //Paskutinis sluoksnis visada yra tirpalo sluoksnis, todėl kreipiuosi layersModel.count - 1
+                    var s0 = parseFloat(layersModel.get(layersModel.count - 1).s0.toString().replace(",", "."));
+                    //Paskutinis sluoksnis visada yra tirpalo sluoksnis, todėl kreipiuosi layersModel.count - 1
+                    var p0 = parseFloat(layersModel.get(layersModel.count - 1).p0.toString().replace(",", "."));
+                    //Atmetu elektrodą ir tirpalo sluoksnį
+                    var noOfBiosensorLayers = layersModel.count - 2;
+
+                    calculatorRunner.setBiosensorInformation(explicitScheme, //int explicitScheme
+                                                             substrateInhibition, //int substrateInhibition
+                                                             productInhibition, //int productInhibition
+                                                             k2, //double k2
+                                                             kM, //double kM
+                                                             kS, //double kS
+                                                             kP, //double kP
+                                                             timeStep, //double timeStep
+                                                             N, //int N gridPointsInput
+                                                             responseTime, //double responseTime
+                                                             //"test.txt",
+                                                             outputFileInput.text.toString(),
+                                                             ne, //int ne
+                                                             s0, //double s0
+                                                             p0, //double p0
+                                                             noOfBiosensorLayers); //int noOfBiosensorLayers
+
+                    //Neimame pirmojo ir paskutiniojo sluoksnio, nes tai yra elektrodas ir tirpalas
+                    var enzymeLayer; var Ds; var Dp; var d; var e0;
+                    for (var i = 1; i < layersModel.count - 1; i++) {
+                        enzymeLayer = layersModel.get(i).layerState == "ENZYME_LAYER";
+                        Ds = layersModel.get(i).Ds;
+                        Dp = layersModel.get(i).Dp;
+                        d = layersModel.get(i).d;
+                        e0 = 0;
+                        if (enzymeLayer)
+                          e0 = layersModel.get(i).e0;
+                        calculatorRunner.setLayerInformation(i - 1, enzymeLayer, Ds, Dp, d, e0);
+                    }
+
+                    calculatorRunner.runCalculator();
                 }
             }
         }

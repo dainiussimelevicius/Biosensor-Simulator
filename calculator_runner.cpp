@@ -23,18 +23,44 @@ CalculatorRunner::~CalculatorRunner() {
 }
 
 Q_INVOKABLE  void CalculatorRunner::runCalculator() {
+    struct BiosensorInformation *localBiosensorInformation = biosensorInformation;
+    biosensorInformation = NULL;
 
-    (*calculateFunction)(collectBiosensorInformation());
+    //Paleidžiame skaičiavimus
+    (*calculateFunction)(localBiosensorInformation);
+
+    //Atlaisviname atmintį
+    free(localBiosensorInformation->biosensorLayers);
+    free(localBiosensorInformation);
 }
 
-struct BiosensorInformation * CalculatorRunner::collectBiosensorInformation() {
-    struct BiosensorInformation * biosensorInformation;
-
+Q_INVOKABLE void CalculatorRunner::setBiosensorInformation(int explicitScheme, int substrateInhibition, int productInhibition, \
+                                                           double k2, double kM, double kS, double kP, double timeStep, int N, \
+                                                           double responseTime, const QString &outputFileName, int ne, \
+                                                           double s0, double p0, int noOfBiosensorLayers) {
     biosensorInformation = (struct BiosensorInformation *) malloc(sizeof(struct BiosensorInformation));
-    biosensorInformation->explicitScheme = 1;
-    //biosensorInformation->kM = QDeclarativeProperty::read(this, "kmConstant").toDouble();
+    biosensorInformation->explicitScheme = explicitScheme;
+    biosensorInformation->substrateInhibition = substrateInhibition;
+    biosensorInformation->productInhibition = productInhibition;
+    biosensorInformation->k2 = k2;
+    biosensorInformation->kM = kM;
+    biosensorInformation->kS = kS;
+    biosensorInformation->kP = kP;
+    biosensorInformation->timeStep = timeStep;
+    biosensorInformation->N = N;
+    biosensorInformation->responseTime = responseTime;
+    biosensorInformation->outputFileName = outputFileName.toLocal8Bit().data();
+    biosensorInformation->ne = ne;
+    biosensorInformation->s0 = s0;
+    biosensorInformation->p0 = p0;
+    biosensorInformation->noOfBiosensorLayers = noOfBiosensorLayers;
+    biosensorInformation->biosensorLayers = (struct LayerInformation *) malloc(sizeof(struct LayerInformation) * noOfBiosensorLayers);
+}
 
-    printf("kM = %f\n", this->property("kM").toDouble());
-
-    return biosensorInformation;
+Q_INVOKABLE  void CalculatorRunner::setLayerInformation(int index, int enzymeLayer, double Ds, double Dp, double d, double e0) {
+    biosensorInformation->biosensorLayers[index].enzymeLayer = enzymeLayer;
+    biosensorInformation->biosensorLayers[index].Ds = Ds;
+    biosensorInformation->biosensorLayers[index].Dp = Dp;
+    biosensorInformation->biosensorLayers[index].d = d;
+    biosensorInformation->biosensorLayers[index].e0 = e0;
 }

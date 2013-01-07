@@ -70,6 +70,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).Dp = diffProductDiffusionInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -107,6 +115,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).Ds = diffSubstrateDiffusionInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -154,6 +170,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).d = diffLayerThicknessInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Image {
@@ -215,6 +239,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).s0 = substrateConcentrationInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -252,6 +284,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).p0 = productConcentrationInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -300,6 +340,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).Dp = enzProductDiffusionInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -338,6 +386,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).Ds = enzSubstrateDiffusionInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Text {
@@ -385,6 +441,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).d = enzLayerThicknessInput.text;
+                        break;
+                    }
+                }
+            }
         }
 
         Image {
@@ -449,6 +513,14 @@ Rectangle {
                 bottom: 0
             }
             focus: true
+            Keys.onReleased: {
+                for (var i = 0; i < layersModel.count; i++) {
+                    if (layersModel.get(i).layerId == layerId) {
+                        layersModel.get(i).e0 = enzEnzymeConcentrationInput.text;
+                        break;
+                    }
+                }
+            }
         }
         anchors.bottom: parent.bottom
         anchors.rightMargin: 0

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <QtGui/QApplication>
 #include "qmlapplicationviewer.h"
-#include "calculatorrunner.h"
+#include "calculator_runner.h"
 #include <QDeclarativeContext>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])

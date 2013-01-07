@@ -31,7 +31,7 @@ symbian:TARGET.CAPABILITY += NetworkServices
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    calculatorrunner.cpp
+    calculator_runner.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -41,5 +41,5 @@ qtcAddDeployment()
 LIBS += -ldl
 
 HEADERS += \
-    calculatorrunner.h \
-    biosensorinformation.h
+    calculator_runner.h \
+    biosensor_information.h
