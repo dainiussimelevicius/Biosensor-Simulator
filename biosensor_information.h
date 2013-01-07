@@ -30,7 +30,16 @@ struct BiosensorInformation {
     double timeStep;
     //Į kiek dalių dalinami sluoksniai
     int N;
-    //Atsako laikas
+    /*
+      Metodas, kuriuo bus nustatomas atsako laikas:
+      0 - iki pusiausvyros
+      1 - iki pusiausvyros su nurodytu minimaliu laiku
+      2 - fiksuotas laikas
+    */
+    int responseTimeMethod;
+    //Minimalus atsako laikas
+    double minTime;
+    //Fiksuotas atsako laikas
     double responseTime;
     //Išvedimo failas
     char *outputFileName;

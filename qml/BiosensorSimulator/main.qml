@@ -1310,30 +1310,17 @@ Rectangle {
 
             Text {
                 id: trText
-                x: 45
-                y: 341
+                x: 306
+                y: 411
                 text: qsTr("t<sub>r</sub> = ")
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: responseTimeInput
-                x: 76
-                y: 341
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator {
-                    bottom: 0
-                }
-                focus: true
-            }
 
             Text {
                 id: trUnitsText
-                x: 148
-                y: 341
+                x: 426
+                y: 411
                 width: 9
                 height: 21
                 text: qsTr("s")
@@ -1343,7 +1330,7 @@ Rectangle {
             Text {
                 id: outputFileText
                 x: 45
-                y: 422
+                y: 459
                 text: qsTr("Output file")
                 font.pixelSize: 20
             }
@@ -1362,12 +1349,10 @@ Rectangle {
                     State {
                         name: "EXPLICIT_SCHEME"
                         PropertyChanges { target: explicitSchemeCheckbox; color: "green"}
-                        PropertyChanges { target: implicitSchemeCheckbox; color: "white"}
                     },
                     State {
                         name: "IMPLICIT_SCHEME"
                         PropertyChanges { target: explicitSchemeCheckbox; color: "white"}
-                        PropertyChanges { target: implicitSchemeCheckbox; color: "green"}
                     }
                 ]
 
@@ -1375,7 +1360,7 @@ Rectangle {
                     id: explicitSchemeCheckboxMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if (explicitSchemeCheckbox.state == "IMPLICIT_SCHEME") {
+                        if (explicitSchemeCheckbox.state != "EXPLICIT_SCHEME") {
                             explicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
                             implicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
                         }
@@ -1396,12 +1381,10 @@ Rectangle {
                 states: [
                     State {
                         name: "EXPLICIT_SCHEME"
-                        PropertyChanges { target: explicitSchemeCheckbox; color: "green"}
                         PropertyChanges { target: implicitSchemeCheckbox; color: "white"}
                     },
                     State {
                         name: "IMPLICIT_SCHEME"
-                        PropertyChanges { target: explicitSchemeCheckbox; color: "white"}
                         PropertyChanges { target: implicitSchemeCheckbox; color: "green"}
                     }
                 ]
@@ -1410,7 +1393,7 @@ Rectangle {
                     id: implicitSchemeCheckboxMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if (implicitSchemeCheckbox.state == "EXPLICIT_SCHEME") {
+                        if (implicitSchemeCheckbox.state != "IMPLICIT_SCHEME") {
                             implicitSchemeCheckbox.state = "IMPLICIT_SCHEME"
                             explicitSchemeCheckbox.state = "IMPLICIT_SCHEME";
                         }
@@ -1537,7 +1520,7 @@ Rectangle {
             Rectangle {
                 id: outputFileInputRectangle
                 x: 45
-                y: 463
+                y: 500
                 width: 613
                 height: 21
                 color: "#ffffff"
@@ -1552,6 +1535,239 @@ Rectangle {
                     anchors.leftMargin: 2
                     anchors.fill: parent
                     font.pixelSize: 18
+                    focus: true
+                }
+            }
+
+            Rectangle {
+                id: defaultResponseTimeCheckbox
+                x: 45
+                y: 343
+                width: 20
+                height: 20
+                color: "#ffffff"
+                radius: 6
+                border.color: "#000000"
+                state: "DEFAULT_RESPONSE_TIME"
+
+                states: [
+                    State {
+                        name: "DEFAULT_RESPONSE_TIME"
+                        PropertyChanges { target: defaultResponseTimeCheckbox; color: "green"}
+                    },
+                    State {
+                        name: "MIN_RESPONSE_TIME"
+                        PropertyChanges { target: defaultResponseTimeCheckbox; color: "white"}
+                    },
+                    State {
+                        name: "FIXED_RESPONSE_TIME"
+                        PropertyChanges { target: defaultResponseTimeCheckbox; color: "white"}
+                    }
+                ]
+
+                MouseArea {
+                    id: defaultResponseTimeCheckboxMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if (state != "DEFAULT_RESPONSE_TIME") {
+                            defaultResponseTimeCheckbox.state = "DEFAULT_RESPONSE_TIME";
+                            minTimeResponseTimeCheckbox.state = "DEFAULT_RESPONSE_TIME";
+                            fixedResponseTimeCheckbox.state = "DEFAULT_RESPONSE_TIME";
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: minTimeResponseTimeCheckbox
+                x: 45
+                y: 376
+                width: 20
+                height: 20
+                color: "#ffffff"
+                radius: 6
+                border.color: "#000000"
+                state: "DEFAULT_RESPONSE_TIME"
+
+                states: [
+                    State {
+                        name: "DEFAULT_RESPONSE_TIME"
+                        PropertyChanges { target: minTimeResponseTimeCheckbox; color: "white"}
+                        PropertyChanges { target: tMinUnitsText; color: "grey"}
+                        PropertyChanges { target: tMinText; color: "grey"}
+                        PropertyChanges { target: minResponseTimeInput; color: "grey"}
+                        PropertyChanges { target: minResponseTimeInput; readOnly: true}
+                    },
+                    State {
+                        name: "MIN_RESPONSE_TIME"
+                        PropertyChanges { target: minTimeResponseTimeCheckbox; color: "green"}
+                        PropertyChanges { target: tMinUnitsText; color: "black"}
+                        PropertyChanges { target: tMinText; color: "black"}
+                        PropertyChanges { target: minResponseTimeInput; color: "black"}
+                        PropertyChanges { target: minResponseTimeInput; readOnly: false}
+                    },
+                    State {
+                        name: "FIXED_RESPONSE_TIME"
+                        PropertyChanges { target: minTimeResponseTimeCheckbox; color: "white"}
+                        PropertyChanges { target: tMinUnitsText; color: "grey"}
+                        PropertyChanges { target: tMinText; color: "grey"}
+                        PropertyChanges { target: minResponseTimeInput; color: "grey"}
+                        PropertyChanges { target: minResponseTimeInput; readOnly: true}
+                    }
+                ]
+
+                MouseArea {
+                    id: minTimeResponseTimeCheckboxMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if (state != "MIN_RESPONSE_TIME") {
+                            defaultResponseTimeCheckbox.state = "MIN_RESPONSE_TIME";
+                            minTimeResponseTimeCheckbox.state = "MIN_RESPONSE_TIME";
+                            fixedResponseTimeCheckbox.state = "MIN_RESPONSE_TIME";
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: fixedResponseTimeCheckbox
+                x: 45
+                y: 411
+                width: 20
+                height: 20
+                color: "#ffffff"
+                radius: 6
+                border.color: "#000000"
+                state: "DEFAULT_RESPONSE_TIME"
+
+                states: [
+                    State {
+                        name: "DEFAULT_RESPONSE_TIME"
+                        PropertyChanges { target: fixedResponseTimeCheckbox; color: "white"}
+                        PropertyChanges { target: trUnitsText; color: "grey"}
+                        PropertyChanges { target: trText; color: "grey"}
+                        PropertyChanges { target: fixedResponseTimeInput; color: "grey"}
+                        PropertyChanges { target: fixedResponseTimeInput; readOnly: true}
+                    },
+                    State {
+                        name: "MIN_RESPONSE_TIME"
+                        PropertyChanges { target: fixedResponseTimeCheckbox; color: "white"}
+                        PropertyChanges { target: trUnitsText; color: "grey"}
+                        PropertyChanges { target: trText; color: "grey"}
+                        PropertyChanges { target: fixedResponseTimeInput; color: "grey"}
+                        PropertyChanges { target: fixedResponseTimeInput; readOnly: true}
+                    },
+                    State {
+                        name: "FIXED_RESPONSE_TIME"
+                        PropertyChanges { target: fixedResponseTimeCheckbox; color: "green"}
+                        PropertyChanges { target: trUnitsText; color: "black"}
+                        PropertyChanges { target: trText; color: "black"}
+                        PropertyChanges { target: fixedResponseTimeInput; color: "black"}
+                        PropertyChanges { target: fixedResponseTimeInput; readOnly: false}
+                    }
+                ]
+
+                MouseArea {
+                    id: fixedResponseTimeCheckboxMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if (state != "FIXED_RESPONSE_TIME") {
+                            defaultResponseTimeCheckbox.state = "FIXED_RESPONSE_TIME";
+                            minTimeResponseTimeCheckbox.state = "FIXED_RESPONSE_TIME";
+                            fixedResponseTimeCheckbox.state = "FIXED_RESPONSE_TIME";
+                        }
+                    }
+                }
+            }
+
+            Text {
+                id: defaultResponseTimeText
+                x: 72
+                y: 346
+                text: qsTr("Until steady-state")
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: minResponseTimeText
+                x: 72
+                y: 379
+                text: qsTr("Until steady-state with minimum time")
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: fixedResponseTimeText
+                x: 72
+                y: 414
+                text: qsTr("Fixed response time")
+                font.pixelSize: 12
+            }
+
+            Text {
+                id: tMinText
+                x: 306
+                y: 376
+                text: qsTr("t<sub>min</sub> = ")
+                font.pixelSize: 18
+            }
+
+            Text {
+                id: tMinUnitsText
+                x: 426
+                y: 376
+                width: 9
+                height: 21
+                text: qsTr("s")
+                font.pixelSize: 18
+            }
+
+            Rectangle {
+                id: minResponseTimeInputRectangle
+                x: 351
+                y: 376
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: minResponseTimeInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator {
+                        bottom: 0
+                    }
+                    focus: true
+                }
+            }
+
+            Rectangle {
+                id: fixedResponseTimeInputRectangle
+                x: 351
+                y: 411
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.color: "#008000"
+                border.width: 4
+
+                TextInput {
+                    id: fixedResponseTimeInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator {
+                        bottom: 0
+                    }
                     focus: true
                 }
             }
@@ -1610,7 +1826,16 @@ Rectangle {
                     var kP = parseFloat(kpConstant.text.replace(",", "."));
                     var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
                     var N = parseInt(gridPointsInput.text.replace(",", "."));
-                    var responseTime = parseFloat(responseTimeInput.text.replace(",", "."));
+                    var responseTimeMethod;
+                    if (defaultResponseTimeCheckbox.state == "DEFAULT_RESPONSE_TIME")
+                        responseTimeMethod = 0;
+                    else if (defaultResponseTimeCheckbox.state == "MIN_RESPONSE_TIME")
+                        responseTimeMethod = 1;
+                    else //defaultResponseTimeCheckbox.state == "FIXED_RESPONSE_TIME"
+                        responseTimeMethod = 2;
+                    var minTime = parseFloat(minResponseTimeInput.text.replace(",", "."));
+                    var responseTime = parseFloat(fixedResponseTimeInput.text.replace(",", "."));
+                    var outputFileName = outputFileInput.text.toString();
                     var ne = parseInt(electroneNumberInput.text.replace(",", "."));
                     //Paskutinis sluoksnis visada yra tirpalo sluoksnis, todėl kreipiuosi layersModel.count - 1
                     var s0 = parseFloat(layersModel.get(layersModel.count - 1).s0.toString().replace(",", "."));
@@ -1628,9 +1853,10 @@ Rectangle {
                                                              kP, //double kP
                                                              timeStep, //double timeStep
                                                              N, //int N gridPointsInput
+                                                             responseTimeMethod, //int responseTimeMethod
+                                                             minTime, //double minTime
                                                              responseTime, //double responseTime
-                                                             //"test.txt",
-                                                             outputFileInput.text.toString(),
+                                                             outputFileName,
                                                              ne, //int ne
                                                              s0, //double s0
                                                              p0, //double p0

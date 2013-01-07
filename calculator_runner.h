@@ -14,7 +14,8 @@ public:
     Q_INVOKABLE  void runCalculator();
     Q_INVOKABLE  void setBiosensorInformation(int explicitScheme, int substrateInhibition, int productInhibition, \
                                  double k2, double kM, double kS, double kP, double timeStep, int N, \
-                                 double responseTime, const QString &outputFileName, int ne, double s0, double p0, \
+                                 int responseTimeMethod, double minTime, double responseTime, \
+                                 const QString &outputFileName, int ne, double s0, double p0, \
                                  int noOfBiosensorLayers);
     Q_INVOKABLE  void setLayerInformation(int index, int enzymeLayer, double Ds, double Dp, double d, double e0);
 private:

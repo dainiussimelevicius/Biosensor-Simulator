@@ -36,7 +36,8 @@ Q_INVOKABLE  void CalculatorRunner::runCalculator() {
 
 Q_INVOKABLE void CalculatorRunner::setBiosensorInformation(int explicitScheme, int substrateInhibition, int productInhibition, \
                                                            double k2, double kM, double kS, double kP, double timeStep, int N, \
-                                                           double responseTime, const QString &outputFileName, int ne, \
+                                                           int responseTimeMethod, double minTime, double responseTime, \
+                                                           const QString &outputFileName, int ne, \
                                                            double s0, double p0, int noOfBiosensorLayers) {
     biosensorInformation = (struct BiosensorInformation *) malloc(sizeof(struct BiosensorInformation));
     biosensorInformation->explicitScheme = explicitScheme;
@@ -48,6 +49,8 @@ Q_INVOKABLE void CalculatorRunner::setBiosensorInformation(int explicitScheme, i
     biosensorInformation->kP = kP;
     biosensorInformation->timeStep = timeStep;
     biosensorInformation->N = N;
+    biosensorInformation->responseTimeMethod = responseTimeMethod;
+    biosensorInformation->minTime = minTime;
     biosensorInformation->responseTime = responseTime;
     biosensorInformation->outputFileName = outputFileName.toLocal8Bit().data();
     biosensorInformation->ne = ne;
