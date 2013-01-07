@@ -56,30 +56,6 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: diffProductDiffusionInput
-            x: 227
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).Dp = diffProductDiffusionInput.text;
-                        break;
-                    }
-                }
-            }
-        }
-
         Text {
             id: diffProductDiffusionText
             x: 189
@@ -99,30 +75,6 @@ Rectangle {
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
-        }
-
-        TextInput {
-            id: diffSubstrateDiffusionInput
-            x: 42
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).Ds = diffSubstrateDiffusionInput.text;
-                        break;
-                    }
-                }
-            }
         }
 
         Text {
@@ -156,30 +108,6 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: diffLayerThicknessInput
-            x: 405
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).d = diffLayerThicknessInput.text;
-                        break;
-                    }
-                }
-            }
-        }
-
         Image {
             id: diffRemoveLayerButton
             x: 509
@@ -196,6 +124,105 @@ Rectangle {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
                             layersModel.remove(i);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: diffSubstrateDiffusionInputRectangle
+            x: 43
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: diffSubstrateDiffusionInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).Ds = diffSubstrateDiffusionInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: diffProductDiffusionInputRectangle
+            x: 228
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: diffProductDiffusionInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).Dp = diffProductDiffusionInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: diffLayerThicknessInputRectangle
+            x: 404
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: diffLayerThicknessInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).d = diffLayerThicknessInput.text;
                             break;
                         }
                     }
@@ -225,33 +252,9 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: substrateConcentrationInput
-            x: 45
-            y: 9
-            width: 67
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).s0 = substrateConcentrationInput.text;
-                        break;
-                    }
-                }
-            }
-        }
-
         Text {
             id: substrateConcentrationUnits
-            x: 112
+            x: 114
             y: 9
             width: 59
             height: 21
@@ -270,30 +273,6 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: productConcentrationInput
-            x: 230
-            y: 9
-            width: 67
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).p0 = productConcentrationInput.text;
-                        break;
-                    }
-                }
-            }
-        }
-
         Text {
             id: productConcentrationUnits
             x: 297
@@ -304,6 +283,72 @@ Rectangle {
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
+        }
+
+        Rectangle {
+            id: substrateConcentrationInputRectangle
+            x: 43
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: substrateConcentrationInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).s0 = substrateConcentrationInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: productConcentrationInputRectangle
+            x: 228
+            y: 10
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: productConcentrationInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).p0 = productConcentrationInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -326,30 +371,6 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: enzProductDiffusionInput
-            x: 227
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).Dp = enzProductDiffusionInput.text;
-                        break;
-                    }
-                }
-            }
-        }
-
         Text {
             id: enzProductDiffusionText
             x: 189
@@ -362,7 +383,7 @@ Rectangle {
 
         Text {
             id: enzSubstrateDiffusionUnits
-            x: 112
+            x: 114
             y: 9
             width: 65
             height: 21
@@ -370,30 +391,6 @@ Rectangle {
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
-        }
-
-        TextInput {
-            id: enzSubstrateDiffusionInput
-            x: 42
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).Ds = enzSubstrateDiffusionInput.text;
-                        break;
-                    }
-                }
-            }
         }
 
         Text {
@@ -425,30 +422,6 @@ Rectangle {
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18
-        }
-
-        TextInput {
-            id: enzLayerThicknessInput
-            x: 405
-            y: 9
-            width: 70
-            height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
-            }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).d = enzLayerThicknessInput.text;
-                        break;
-                    }
-                }
-            }
         }
 
         Image {
@@ -499,25 +472,133 @@ Rectangle {
             font.pixelSize: 18
         }
 
-        TextInput {
-            id: enzEnzymeConcentrationInput
+        Rectangle {
+            id: enzEnzymeConcentrationInputRectangle
             x: 556
             y: 9
-            width: 70
+            width: 67
             height: 21
-            text: qsTr("0")
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 18
-            validator: DoubleValidator {
-                bottom: 0
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: enzEnzymeConcentrationInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).e0 = enzEnzymeConcentrationInput.text;
+                            break;
+                        }
+                    }
+                }
             }
-            focus: true
-            Keys.onReleased: {
-                for (var i = 0; i < layersModel.count; i++) {
-                    if (layersModel.get(i).layerId == layerId) {
-                        layersModel.get(i).e0 = enzEnzymeConcentrationInput.text;
-                        break;
+        }
+
+        Rectangle {
+            id: enzSubstrateDiffusionInputRectangle
+            x: 43
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: enzSubstrateDiffusionInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).Ds = enzSubstrateDiffusionInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: enzProductDiffusionInputRectangle
+            x: 228
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: enzProductDiffusionInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).Dp = enzProductDiffusionInput.text;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: enzLayerThicknessInputRectangle
+            x: 404
+            y: 9
+            width: 67
+            height: 21
+            color: "#ffffff"
+            radius: 6
+            border.width: 4
+            border.color: "#008000"
+
+            TextInput {
+                id: enzLayerThicknessInput
+                text: qsTr("0")
+                anchors.rightMargin: 2
+                anchors.leftMargin: 2
+                anchors.fill: parent
+                font.pixelSize: 18
+                validator: DoubleValidator {
+                    bottom: 0
+                }
+                focus: true
+                Keys.onReleased: {
+                    for (var i = 0; i < layersModel.count; i++) {
+                        if (layersModel.get(i).layerId == layerId) {
+                            layersModel.get(i).d = enzLayerThicknessInput.text;
+                            break;
+                        }
                     }
                 }
             }

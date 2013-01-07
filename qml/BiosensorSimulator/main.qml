@@ -234,22 +234,6 @@ Rectangle {
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: k1TextInput
-                x: 82
-                y: 53
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k1TextInput.acceptableInput) {
-                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
-                    }
-                }
-            }
 
             Text {
                 id: k1UnitsText
@@ -269,22 +253,6 @@ Rectangle {
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: k_1TextInput
-                x: 82
-                y: 87
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k_1TextInput.acceptableInput) {
-                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
-                    }
-                }
-            }
 
             Text {
                 id: k_1UnitsText
@@ -302,23 +270,6 @@ Rectangle {
                 y: 121
                 text: qsTr("k<sub>2</sub> = ")
                 font.pixelSize: 18
-            }
-
-            TextInput {
-                id: k2TextInput
-                x: 82
-                y: 121
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k2TextInput.acceptableInput) {
-                        kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
-                    }
-                }
             }
 
             Text {
@@ -399,22 +350,6 @@ Rectangle {
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: k3TextInput
-                x: 82
-                y: 204
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k3TextInput.acceptableInput) {
-                        ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
-                    }
-                }
-            }
 
             Text {
                 id: k3UnitsText
@@ -432,23 +367,6 @@ Rectangle {
                 y: 238
                 text: qsTr("k<sub>-3</sub> = ")
                 font.pixelSize: 18
-            }
-
-            TextInput {
-                id: k_3TextInput
-                x: 82
-                y: 238
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k_3TextInput.acceptableInput) {
-                        ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
-                    }
-                }
             }
 
             Text {
@@ -529,23 +447,6 @@ Rectangle {
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: k4TextInput
-                x: 82
-                y: 316
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k4TextInput.acceptableInput) {
-                        kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
-                    }
-                }
-            }
-
             Text {
                 id: k4UnitsText
                 x: 154
@@ -562,23 +463,6 @@ Rectangle {
                 y: 350
                 text: qsTr("k<sub>-4</sub> = ")
                 font.pixelSize: 18
-            }
-
-            TextInput {
-                id: k_4TextInput
-                x: 82
-                y: 350
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator{bottom: 0;}
-                focus: true
-                Keys.onReleased: {
-                    if (k_4TextInput.acceptableInput) {
-                        kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
-                    }
-                }
             }
 
             Text {
@@ -673,6 +557,202 @@ Rectangle {
                 y: 277
                 text: qsTr("Reaction rate constants of product inhibition equations")
                 font.pixelSize: 20
+            }
+
+            Rectangle {
+                id: k_4TextInputRectangle
+                x: 77
+                y: 350
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "green"
+
+                TextInput {
+                    id: k_4TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k_4TextInput.acceptableInput) {
+                            kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k4TextInputRectangle
+                x: 77
+                y: 316
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k4TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k4TextInput.acceptableInput) {
+                            kpConstant.text = constantCalculator.calculateKInhibition(k4TextInput.text, k_4TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k_3TextInputRectangle
+                x: 77
+                y: 238
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k_3TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k_3TextInput.acceptableInput) {
+                            ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k3TextInputRectangle
+                x: 77
+                y: 204
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k3TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k3TextInput.acceptableInput) {
+                            ksConstant.text = constantCalculator.calculateKInhibition(k3TextInput.text, k_3TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k2TextInputRectangle
+                x: 77
+                y: 121
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k2TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k2TextInput.acceptableInput) {
+                            kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k_1TextInputRectangle
+                x: 77
+                y: 87
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k_1TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k_1TextInput.acceptableInput) {
+                            kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                id: k1TextInputRectangle
+                x: 77
+                y: 53
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: k1TextInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator{bottom: 0;}
+                    focus: true
+                    Keys.onReleased: {
+                        if (k1TextInput.acceptableInput) {
+                            kmConstant.text = constantCalculator.calculateKm(k1TextInput.text, k_1TextInput.text, k2TextInput.text);
+                        }
+                    }
+                }
             }
         }
 
@@ -999,20 +1079,6 @@ Rectangle {
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: electroneNumberInput
-                x: 399
-                y: 462
-                width: 26
-                height: 21
-                text: qsTr("1")
-                font.pixelSize: 18
-                validator: IntValidator {
-                    bottom: 1
-                }
-                focus: true
-            }
-
             Text {
                 id: chargeTransferReaction
                 x: 45
@@ -1027,6 +1093,34 @@ Rectangle {
                 y: 636
                 text: qsTr("P<sub>final</sub> - product of electrochemical reaction")
                 font.pixelSize: 16
+            }
+
+            Rectangle {
+                id: electroneNumberInputRectangle
+                x: 397
+                y: 462
+                width: 30
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "green"
+
+                TextInput {
+                    id: electroneNumberInput
+                    text: qsTr("1")
+                    horizontalAlignment: TextInput.AlignHCenter
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.bottomMargin: 0
+                    anchors.topMargin: 0
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: IntValidator {
+                        bottom: 1
+                    }
+                    focus: true
+                }
             }
 
         }
@@ -1209,7 +1303,7 @@ Rectangle {
             Text {
                 id: responseTimeText
                 x: 45
-                y: 15
+                y: 304
                 text: qsTr("Response time")
                 font.pixelSize: 20
             }
@@ -1217,7 +1311,7 @@ Rectangle {
             Text {
                 id: trText
                 x: 45
-                y: 52
+                y: 341
                 text: qsTr("t<sub>r</sub> = ")
                 font.pixelSize: 18
             }
@@ -1225,7 +1319,7 @@ Rectangle {
             TextInput {
                 id: responseTimeInput
                 x: 76
-                y: 52
+                y: 341
                 width: 72
                 height: 21
                 text: qsTr("0")
@@ -1239,7 +1333,7 @@ Rectangle {
             Text {
                 id: trUnitsText
                 x: 148
-                y: 52
+                y: 341
                 width: 9
                 height: 21
                 text: qsTr("s")
@@ -1249,26 +1343,15 @@ Rectangle {
             Text {
                 id: outputFileText
                 x: 45
-                y: 380
+                y: 422
                 text: qsTr("Output file")
                 font.pixelSize: 20
-            }
-
-            TextInput {
-                id: outputFileInput
-                x: 45
-                y: 416
-                width: 613
-                height: 21
-                text: qsTr("output.dat")
-                font.pixelSize: 18
-                focus: true
             }
 
             Rectangle {
                 id: explicitSchemeCheckbox
                 x: 45
-                y: 137
+                y: 55
                 width: 20
                 height: 20
                 radius: 6
@@ -1303,7 +1386,7 @@ Rectangle {
             Rectangle {
                 id: implicitSchemeCheckbox
                 x: 45
-                y: 168
+                y: 90
                 width: 20
                 height: 20
                 radius: 6
@@ -1337,16 +1420,16 @@ Rectangle {
 
             Text {
                 id: explicitSchemeText
-                x: 76
-                y: 140
+                x: 77
+                y: 58
                 text: qsTr("Use explicit scheme")
                 font.pixelSize: 12
             }
 
             Text {
                 id: implicitSchemeText
-                x: 76
-                y: 170
+                x: 77
+                y: 92
                 text: qsTr("Use implicit scheme")
                 font.pixelSize: 12
             }
@@ -1354,7 +1437,7 @@ Rectangle {
             Text {
                 id: schemeText
                 x: 45
-                y: 95
+                y: 16
                 text: qsTr("The type of finite difference scheme")
                 font.pixelSize: 20
             }
@@ -1362,7 +1445,7 @@ Rectangle {
             Text {
                 id: timeStepText
                 x: 45
-                y: 209
+                y: 129
                 text: qsTr("Time step")
                 font.pixelSize: 20
             }
@@ -1370,29 +1453,15 @@ Rectangle {
             Text {
                 id: timeStep
                 x: 45
-                y: 250
+                y: 170
                 text: qsTr("Δt = ")
                 font.pixelSize: 18
-            }
-
-            TextInput {
-                id: timeStepInput
-                x: 83
-                y: 250
-                width: 72
-                height: 21
-                text: qsTr("0")
-                font.pixelSize: 18
-                validator: DoubleValidator {
-                    bottom: 0
-                }
-                focus: true
             }
 
             Text {
                 id: timeStepUnits
                 x: 157
-                y: 250
+                y: 170
                 width: 9
                 height: 21
                 text: qsTr("s")
@@ -1402,7 +1471,7 @@ Rectangle {
             Text {
                 id: gridPointsText
                 x: 45
-                y: 294
+                y: 214
                 text: qsTr("Grid points for a layer")
                 font.pixelSize: 20
             }
@@ -1410,23 +1479,81 @@ Rectangle {
             Text {
                 id: gridPoints
                 x: 45
-                y: 339
+                y: 259
                 text: qsTr("N = ")
                 font.pixelSize: 18
             }
 
-            TextInput {
-                id: gridPointsInput
-                x: 83
-                y: 339
+            Rectangle {
+                id: timeStepInputRectangle
+                x: 82
+                y: 170
                 width: 72
                 height: 21
-                text: qsTr("200")
-                font.pixelSize: 18
-                validator: DoubleValidator {
-                    bottom: 0
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: timeStepInput
+                    text: qsTr("0")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator {
+                        bottom: 0
+                    }
+                    focus: true
                 }
-                focus: true
+            }
+
+            Rectangle {
+                id: gridPointsInputRectangle
+                x: 82
+                y: 259
+                width: 72
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: gridPointsInput
+                    text: qsTr("200")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    validator: DoubleValidator {
+                        bottom: 0
+                    }
+                    focus: true
+                }
+            }
+
+            Rectangle {
+                id: outputFileInputRectangle
+                x: 45
+                y: 463
+                width: 613
+                height: 21
+                color: "#ffffff"
+                radius: 6
+                border.width: 4
+                border.color: "#008000"
+
+                TextInput {
+                    id: outputFileInput
+                    text: qsTr("output.dat")
+                    anchors.rightMargin: 2
+                    anchors.leftMargin: 2
+                    anchors.fill: parent
+                    font.pixelSize: 18
+                    focus: true
+                }
             }
 
         }
