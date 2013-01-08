@@ -5,7 +5,7 @@ enum RESP_METHOD
 {
   DEFAULT_TIME, //0 - iki pusiausvyros
   MIN_TIME,     //1 - iki pusiausvyros su nurodytu minimaliu laiku
-  FIXED2TIME    //2 - fiksuotas laikas
+  FIXED_TIME    //2 - fiksuotas laikas
 };
 
 struct LayerInformation 

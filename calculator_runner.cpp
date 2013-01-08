@@ -54,7 +54,7 @@ Q_INVOKABLE void CalculatorRunner::setBiosensorInformation(int explicitScheme, i
     //[s]
     biosensorInformation->timeStep = timeStep;
     biosensorInformation->N = N;
-    biosensorInformation->responseTimeMethod = responseTimeMethod;
+    biosensorInformation->responseTimeMethod = (enum RESP_METHOD) responseTimeMethod;
     //[s]
     biosensorInformation->minTime = minTime;
     //[s]
