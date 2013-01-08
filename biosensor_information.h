@@ -4,12 +4,12 @@
 struct LayerInformation {
     //Laukas nurodo ar tai fermento sluoksnis
     int enzymeLayer;
-    //Difuzijos koeficientai
+    //Difuzijos koeficientai (cm^2/s)
     double Ds;
     double Dp;
-    //Sluoksnio storis
+    //Sluoksnio storis (cm)
     double d;
-    //Fermento koncentracija
+    //Fermento koncentracija (mol/cm^3)
     double e0;
 };
 
@@ -20,13 +20,13 @@ struct BiosensorInformation {
     int substrateInhibition;
     //Laukas nurodo ar vyksta produkto inhibicija
     int productInhibition;
-    //Reakcijos greičio konstanta k2
+    //Reakcijos greičio konstanta k2 (s^-1)
     double k2;
-    //Pusiausvyros konstantos
+    //Pusiausvyros konstantos (mol/cm^3)
     double kM;
     double kS;
     double kP;
-    //Žingsnis pagal laiką
+    //Žingsnis pagal laiką (s)
     double timeStep;
     //Į kiek dalių dalinami sluoksniai
     int N;
@@ -37,17 +37,17 @@ struct BiosensorInformation {
       2 - fiksuotas laikas
     */
     int responseTimeMethod;
-    //Minimalus atsako laikas
+    //Minimalus atsako laikas (s)
     double minTime;
-    //Fiksuotas atsako laikas
+    //Fiksuotas atsako laikas (s)
     double responseTime;
     //Išvedimo failas
     char *outputFileName;
     //Elektronų, dalyvaujančių krūvio pernešime, skaičius
     int ne;
-    //Substrato koncentracija tirpale
+    //Substrato koncentracija tirpale (mol/cm^3)
     double s0;
-    //Produkto koncentracija tirpale
+    //Produkto koncentracija tirpale (mol/cm^3)
     double p0;
     //Biojutiklio sluoksnių skaičius
     int noOfBiosensorLayers;
