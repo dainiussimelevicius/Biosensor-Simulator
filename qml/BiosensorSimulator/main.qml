@@ -8,6 +8,49 @@ Rectangle {
     color: "#000000"
     state: "REACTIONS"
 
+    function checkTimeStepCurrectness() {
+        if (explicitSchemeCheckbox.state == "EXPLICIT_SCHEME") {
+            //[s]
+            var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
+            var minTimeStep = timeStep;
+            var N = parseInt(gridPointsInput.text);
+            var Ds; var Dp; var d; var spaceStep; var requiredTimeStep;
+            for (var i = 1; i < layersModel.count - 1; i++) {
+                //[um^2/s]
+                Ds = layersModel.get(i).Ds;
+                //[um^2/s]
+                Dp = layersModel.get(i).Dp;
+                //[um]
+                d = layersModel.get(i).d;
+                //[um]
+                spaceStep = d / N;
+
+                if ((Ds == 0) || (Dp == 0))
+                    break;
+
+                //Apskaičiuojame maksimalų žingsnio dydį substratui
+                requiredTimeStep = (spaceStep * spaceStep) / (2 * Ds);
+                if (requiredTimeStep < minTimeStep)
+                    minTimeStep = requiredTimeStep;
+                //Apskaičiuojame maksimalų žingsnio dydį produktui
+                requiredTimeStep = (spaceStep * spaceStep) / (2 * Dp);
+                if (requiredTimeStep < minTimeStep)
+                    minTimeStep = requiredTimeStep;
+            }
+            //Informuojame vartotoją kokį žingsnį pagal laiką reikėtų parinkti
+            if (timeStep > minTimeStep) {
+                tooBigTimeStepWarning.text = qsTr("Time step may be too big (suggested time step is ≤ " + minTimeStep + ")");
+                tooBigTimeStepWarning.visible = true;
+            }
+            else {
+                tooBigTimeStepWarning.visible = false;
+            }
+        }
+        else {
+            tooBigTimeStepWarning.visible = false;
+        }
+    }
+
     Rectangle {
         id: leftRectangle
         width: 148
@@ -1364,6 +1407,7 @@ Rectangle {
                             explicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
                             implicitSchemeCheckbox.state = "EXPLICIT_SCHEME";
                         }
+                        checkTimeStepCurrectness();
                     }
                 }
             }
@@ -1397,6 +1441,7 @@ Rectangle {
                             implicitSchemeCheckbox.state = "IMPLICIT_SCHEME"
                             explicitSchemeCheckbox.state = "IMPLICIT_SCHEME";
                         }
+                        checkTimeStepCurrectness();
                     }
                 }
             }
@@ -1490,46 +1535,7 @@ Rectangle {
                     }
                     focus: true
                     Keys.onReleased: {
-                        if (timeStepInput.acceptableInput && (explicitSchemeCheckbox.state == "EXPLICIT_SCHEME")) {
-                            //[s]
-                            var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
-                            var minTimeStep = timeStep;
-                            var N = parseInt(gridPointsInput.text);
-                            var Ds; var Dp; var d; var spaceStep; var requiredTimeStep;
-                            for (var i = 1; i < layersModel.count - 1; i++) {
-                                //[um^2/s]
-                                Ds = layersModel.get(i).Ds;
-                                //[um^2/s]
-                                Dp = layersModel.get(i).Dp;
-                                //[um]
-                                d = layersModel.get(i).d;
-                                //[um]
-                                spaceStep = d / N;
-
-                                if ((Ds == 0) || (Dp == 0))
-                                    break;
-
-                                //Apskaičiuojame maksimalų žingsnio dydį substratui
-                                requiredTimeStep = (spaceStep * spaceStep) / (2 * Ds);
-                                if (requiredTimeStep < minTimeStep)
-                                    minTimeStep = requiredTimeStep;
-                                //Apskaičiuojame maksimalų žingsnio dydį produktui
-                                requiredTimeStep = (spaceStep * spaceStep) / (2 * Dp);
-                                if (requiredTimeStep < minTimeStep)
-                                    minTimeStep = requiredTimeStep;
-                            }
-                            //Informuojame vartotoją kokį žingsnį pagal laiką reikėtų parinkti
-                            if (timeStep > minTimeStep) {
-                                tooBigTimeStepWarning.text = qsTr("Time step may be too big (suggested time step is ≤ " + minTimeStep + ")");
-                                tooBigTimeStepWarning.visible = true;
-                            }
-                            else {
-                                tooBigTimeStepWarning.visible = false;
-                            }
-                        }
-                        else {
-                            tooBigTimeStepWarning.visible = false;
-                        }
+                        checkTimeStepCurrectness();
                     }
                 }
             }
@@ -1556,6 +1562,9 @@ Rectangle {
                         bottom: 0
                     }
                     focus: true
+                    Keys.onReleased: {
+                        checkTimeStepCurrectness();
+                    }
                 }
             }
 

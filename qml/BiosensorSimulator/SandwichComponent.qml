@@ -160,6 +160,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
@@ -193,6 +194,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
@@ -226,6 +228,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
@@ -534,6 +537,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
@@ -567,6 +571,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
@@ -600,6 +605,7 @@ Rectangle {
                             break;
                         }
                     }
+                    checkTimeStepCurrectness();
                 }
             }
         }
