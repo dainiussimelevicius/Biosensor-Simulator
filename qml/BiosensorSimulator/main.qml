@@ -1489,6 +1489,48 @@ Rectangle {
                         bottom: 0
                     }
                     focus: true
+                    Keys.onReleased: {
+                        if (timeStepInput.acceptableInput && (explicitSchemeCheckbox.state == "EXPLICIT_SCHEME")) {
+                            //[s]
+                            var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
+                            var minTimeStep = timeStep;
+                            var N = parseInt(gridPointsInput.text);
+                            var Ds; var Dp; var d; var spaceStep; var requiredTimeStep;
+                            for (var i = 1; i < layersModel.count - 1; i++) {
+                                //[um^2/s]
+                                Ds = layersModel.get(i).Ds;
+                                //[um^2/s]
+                                Dp = layersModel.get(i).Dp;
+                                //[um]
+                                d = layersModel.get(i).d;
+                                //[um]
+                                spaceStep = d / N;
+
+                                if ((Ds == 0) || (Dp == 0))
+                                    break;
+
+                                //Apskaičiuojame maksimalų žingsnio dydį substratui
+                                requiredTimeStep = (spaceStep * spaceStep) / (2 * Ds);
+                                if (requiredTimeStep < minTimeStep)
+                                    minTimeStep = requiredTimeStep;
+                                //Apskaičiuojame maksimalų žingsnio dydį produktui
+                                requiredTimeStep = (spaceStep * spaceStep) / (2 * Dp);
+                                if (requiredTimeStep < minTimeStep)
+                                    minTimeStep = requiredTimeStep;
+                            }
+                            //Informuojame vartotoją kokį žingsnį pagal laiką reikėtų parinkti
+                            if (timeStep > minTimeStep) {
+                                tooBigTimeStepWarning.text = qsTr("Time step may be too big (suggested time step is ≤ " + minTimeStep + ")");
+                                tooBigTimeStepWarning.visible = true;
+                            }
+                            else {
+                                tooBigTimeStepWarning.visible = false;
+                            }
+                        }
+                        else {
+                            tooBigTimeStepWarning.visible = false;
+                        }
+                    }
                 }
             }
 
@@ -1772,6 +1814,16 @@ Rectangle {
                 }
             }
 
+            Text {
+                id: tooBigTimeStepWarning
+                x: 214
+                y: 173
+                text: qsTr("Time step may be too big")
+                visible: false
+                font.pixelSize: 12
+                color: "red"
+            }
+
         }
     }
 
@@ -1825,7 +1877,7 @@ Rectangle {
                     var kS = parseFloat(ksConstant.text.replace(",", "."));
                     var kP = parseFloat(kpConstant.text.replace(",", "."));
                     var timeStep = parseFloat(timeStepInput.text.replace(",", "."));
-                    var N = parseInt(gridPointsInput.text.replace(",", "."));
+                    var N = parseInt(gridPointsInput.text);
                     var responseTimeMethod;
                     if (defaultResponseTimeCheckbox.state == "DEFAULT_RESPONSE_TIME")
                         responseTimeMethod = 0;
@@ -1836,7 +1888,7 @@ Rectangle {
                     var minTime = parseFloat(minResponseTimeInput.text.replace(",", "."));
                     var responseTime = parseFloat(fixedResponseTimeInput.text.replace(",", "."));
                     var outputFileName = outputFileInput.text.toString();
-                    var ne = parseInt(electroneNumberInput.text.replace(",", "."));
+                    var ne = parseInt(electroneNumberInput.text);
                     //Paskutinis sluoksnis visada yra tirpalo sluoksnis, todėl kreipiuosi layersModel.count - 1
                     var s0 = parseFloat(layersModel.get(layersModel.count - 1).s0.toString().replace(",", "."));
                     //Paskutinis sluoksnis visada yra tirpalo sluoksnis, todėl kreipiuosi layersModel.count - 1
