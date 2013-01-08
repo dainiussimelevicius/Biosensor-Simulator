@@ -1,7 +1,15 @@
 #ifndef BIOSENSORINFORMATION_H
 #define BIOSENSORINFORMATION_H
 
-struct LayerInformation {
+enum RESP_METHOD            
+{
+  DEFAULT_TIME, //0 - iki pusiausvyros
+  MIN_TIME,     //1 - iki pusiausvyros su nurodytu minimaliu laiku
+  FIXED2TIME    //2 - fiksuotas laikas
+};
+
+struct LayerInformation 
+{
     //Laukas nurodo ar tai fermento sluoksnis
     int enzymeLayer;
     //Difuzijos koeficientai (cm^2/s)
@@ -13,7 +21,8 @@ struct LayerInformation {
     double e0;
 };
 
-struct BiosensorInformation {
+struct BiosensorInformation 
+{
     //Laukas nurodo ar naudojama išreikštinė schema (priešingu atveju bus naudojama neišreikštinė schema)
     int explicitScheme;
     //Laukas nurodo ar vyksta substrato inhibicija
@@ -30,13 +39,8 @@ struct BiosensorInformation {
     double timeStep;
     //Į kiek dalių dalinami sluoksniai
     int N;
-    /*
-      Metodas, kuriuo bus nustatomas atsako laikas:
-      0 - iki pusiausvyros
-      1 - iki pusiausvyros su nurodytu minimaliu laiku
-      2 - fiksuotas laikas
-    */
-    int responseTimeMethod;
+    //Metodas, kuriuo bus nustatomas atsako laikas:
+    enum RESP_METHOD responseTimeMethod;
     //Minimalus atsako laikas (s)
     double minTime;
     //Fiksuotas atsako laikas (s)
