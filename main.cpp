@@ -6,6 +6,11 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
+    /*
+      Kitu atveju naudojama tokia lokalė kaip nustatyta sistemoje ir esant lietuviškai lokalei į rezultatų failą rašo skaičius su kableliais
+    */
+    setenv("LC_NUMERIC", "C", 1);
+
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
     QmlApplicationViewer viewer;
