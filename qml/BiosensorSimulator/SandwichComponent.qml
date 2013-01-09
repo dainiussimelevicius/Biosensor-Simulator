@@ -156,7 +156,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).Ds = diffSubstrateDiffusionInput.text;
+                            layersModel.get(i).Ds = parseFloat(diffSubstrateDiffusionInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -190,7 +190,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).Dp = diffProductDiffusionInput.text;
+                            layersModel.get(i).Dp = parseFloat(diffProductDiffusionInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -224,7 +224,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).d = diffLayerThicknessInput.text;
+                            layersModel.get(i).d = parseFloat(diffLayerThicknessInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -313,7 +313,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).s0 = substrateConcentrationInput.text;
+                            layersModel.get(i).s0 = parseFloat(substrateConcentrationInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -346,7 +346,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).p0 = productConcentrationInput.text;
+                            layersModel.get(i).p0 = parseFloat(productConcentrationInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -500,7 +500,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).e0 = enzEnzymeConcentrationInput.text;
+                            layersModel.get(i).e0 = parseFloat(enzEnzymeConcentrationInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -533,7 +533,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).Ds = enzSubstrateDiffusionInput.text;
+                            layersModel.get(i).Ds = parseFloat(enzSubstrateDiffusionInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -567,7 +567,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).Dp = enzProductDiffusionInput.text;
+                            layersModel.get(i).Dp = parseFloat(enzProductDiffusionInput.text.replace(",", "."));
                             break;
                         }
                     }
@@ -601,7 +601,7 @@ Rectangle {
                 Keys.onReleased: {
                     for (var i = 0; i < layersModel.count; i++) {
                         if (layersModel.get(i).layerId == layerId) {
-                            layersModel.get(i).d = enzLayerThicknessInput.text;
+                            layersModel.get(i).d = parseFloat(enzLayerThicknessInput.text.replace(",", "."));
                             break;
                         }
                     }

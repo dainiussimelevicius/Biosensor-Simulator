@@ -31,6 +31,7 @@ Q_INVOKABLE  void CalculatorRunner::runCalculator() {
 
     //Atlaisviname atmintį
     free(localBiosensorInformation->biosensorLayers);
+    free(localBiosensorInformation->outputFileName);
     free(localBiosensorInformation);
 }
 
@@ -59,7 +60,11 @@ Q_INVOKABLE void CalculatorRunner::setBiosensorInformation(int explicitScheme, i
     biosensorInformation->minTime = minTime;
     //[s]
     biosensorInformation->responseTime = responseTime;
-    biosensorInformation->outputFileName = outputFileName.toLocal8Bit().data();
+
+    char *out_file_name = outputFileName.toLocal8Bit().data();
+    biosensorInformation->outputFileName = (char *) malloc(strlen(out_file_name) + 1);
+    strcpy(biosensorInformation->outputFileName, out_file_name);
+
     biosensorInformation->ne = ne;
     //[mol/l] -> [mol/cm^3]
     biosensorInformation->s0 = s0 * 1e-3;
