@@ -6,17 +6,15 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    /*
-      Kitu atveju naudojama tokia lokalė kaip nustatyta sistemoje ir esant lietuviškai lokalei į rezultatų failą rašo skaičius su kableliais
-    */
+    //Kitu atveju naudojama tokia lokalė kaip nustatyta sistemoje ir esant lietuviškai lokalei į rezultatų failą rašo skaičius su kableliais
     setenv("LC_NUMERIC", "C", 1);
 
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
     QmlApplicationViewer viewer;
 
-    CalculatorRunner calculatorRunner;
-    viewer.rootContext()->setContextProperty("calculatorRunner", &calculatorRunner);
+    CalculatorRunner calculator_runner;
+    viewer.rootContext()->setContextProperty("calculator_runner", &calculator_runner);
 
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/BiosensorSimulator/main.qml"));

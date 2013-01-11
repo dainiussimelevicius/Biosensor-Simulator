@@ -1905,7 +1905,7 @@ Rectangle {
                     //Atmetu elektrodą ir tirpalo sluoksnį
                     var noOfBiosensorLayers = layersModel.count - 2;
 
-                    calculatorRunner.setBiosensorInformation(explicitScheme, //int explicitScheme
+                    calculator_runner.setBiosensorInformation(explicitScheme, //int explicitScheme
                                                              substrateInhibition, //int substrateInhibition
                                                              productInhibition, //int productInhibition
                                                              k2, //double k2
@@ -1933,10 +1933,10 @@ Rectangle {
                         e0 = 0;
                         if (enzymeLayer)
                           e0 = layersModel.get(i).e0;
-                        calculatorRunner.setLayerInformation(i - 1, enzymeLayer, Ds, Dp, d, e0);
+                        calculator_runner.setLayerInformation(i - 1, enzymeLayer, Ds, Dp, d, e0);
                     }
 
-                    calculatorRunner.runCalculator();
+                    calculator_runner.runCalculator();
                 }
             }
         }

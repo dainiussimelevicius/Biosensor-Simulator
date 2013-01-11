@@ -9,19 +9,19 @@ class CalculatorRunner : public QObject
 {
     Q_OBJECT
 public:
-    CalculatorRunner(QObject* parent = 0);
+    CalculatorRunner(QObject *parent = 0);
     ~CalculatorRunner();
     Q_INVOKABLE  void runCalculator();
-    Q_INVOKABLE  void setBiosensorInformation(int explicitScheme, int substrateInhibition, int productInhibition, \
-                                 double k2, double kM, double kS, double kP, double timeStep, int N, \
-                                 int responseTimeMethod, double minTime, double responseTime, \
-                                 const QString &outputFileName, int ne, double s0, double p0, \
-                                 int noOfBiosensorLayers);
-    Q_INVOKABLE  void setLayerInformation(int index, int enzymeLayer, double Ds, double Dp, double d, double e0);
+    Q_INVOKABLE  void setBiosensorInformation(int explicit_scheme, int subs_inh, int prod_inh, \
+                                 double k2, double km, double ks, double kp, double dt, int n, \
+                                 int resp_t_meth, double min_t, double resp_t, \
+                                 const QString &out_file_name, int ne, double s0, double p0, \
+                                 int layer_count);
+    Q_INVOKABLE  void setLayerInformation(int index, int enz_layer, double Ds, double Dp, double d, double e0);
 private:
-    void *calculatorLibHandle;
-    void (*calculateFunction)(struct BiosensorInformation *);
-    struct BiosensorInformation * biosensorInformation;
+    void *calculator_lib_handle_;
+    void (*calculate_function_)(struct bio_params *);
+    struct bio_params *biosensor_information_;
 };
 
 #endif // CALCULATORRUNNER_H
