@@ -1878,6 +1878,15 @@ Rectangle {
                 onEntered: runButton.color = "#6495ed"
                 onExited: runButton.color = "#d3d3d3"
                 onClicked: {
+                    var maxProgressBarId = 0;
+                    for (var i = 0; i < progressBarsModel.count; i++) {
+                        if (progressBarsModel.get(i).progressBarId > maxProgressBarId) {
+                            maxProgressBarId = progressBarsModel.get(i).progressBarId;
+                        }
+                    }
+                    var newProgressBarId = maxProgressBarId + 1;
+                    progressBarsModel.append({progressBarId: newProgressBarId});
+
                     var explicitScheme = explicitSchemeCheckbox.state == "EXPLICIT_SCHEME";
                     var substrateInhibition = substrateCheckbox.state == "SUBSTRATE_INHIBITION_ENABLED";
                     var productInhibition = productCheckbox.state == "PRODUCT_INHIBITION_ENABLED";
@@ -1936,7 +1945,70 @@ Rectangle {
                         calculator_runner.setLayerInformation(i - 1, enzymeLayer, Ds, Dp, d, e0);
                     }
 
-                    calculator_runner.runCalculator();
+                    calculator_runner.runCalculator(newProgressBarId);
+                }
+            }
+        }
+
+        ListModel {
+            id: progressBarsModel
+            //Iš pradžių nerodomas nė vienas progress bar'as
+        }
+
+        ListView {
+            id: progressBarListView
+            interactive: false
+            orientation: ListView.Horizontal
+            anchors.fill: parent
+            delegate: Item {
+                id: progressBarDelegate
+                height: 40
+                width: 110
+                anchors.verticalCenter: parent.verticalCenter
+
+                Rectangle {
+                    width: 100
+                    height: 40
+                    color: "green"
+                    radius: 6
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    id: simulationNo
+                    text: qsTr("Simulation #" + progressBarId);
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 1
+
+                }
+
+                Text {
+                    id: timeIndicator
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 1
+                    font.pixelSize: 20
+                    font.bold: true
+                    Connections {
+                        target: calculator_runner
+                        onCrunched: {
+                            if (id == progressBarId)
+                                timeIndicator.text = qsTr(time + "s");
+                        }
+                    }
+                }
+            }
+            model: progressBarsModel
+            Connections {
+                target: calculator_runner
+                onFinished: {
+                    for (var i = 0; i < progressBarsModel.count; i++) {
+                        if (progressBarsModel.get(i).progressBarId == id) {
+                            progressBarsModel.remove(i);
+                            break;
+                        }
+                    }
                 }
             }
         }
