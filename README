@@ -1,0 +1,11 @@
+Biosensor-Simulator yra grafinės vartotojo sąsajos dinaminei bibliotekai Biosensor-Calculator-Library projektas.
+
+Vykdomąjį failą galima sukompiliuoti su programėlėmis qmake ir make.
+Direktorijoje, kurioje yra projekto failas BiosensorSimulator.pro reikia įvykdyti dvi komandas:
+$ qmake
+$ make
+Šioje direktorijoje bus sukurtas vykdomasis failas BiosensorSimulator.
+Tuomet reikia į šią direktoriją, nukopijuoti dinaminės bibliotekos failą:
+cp /dynamic-library-location/libbiosensor_calculator.so .
+Paleidžiame programą:
+$ ./BiosensorSimulator
