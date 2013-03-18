@@ -848,7 +848,7 @@ Rectangle {
                 id: mainEquationText
                 x: 45
                 y: 15
-                text: qsTr("Michaelis-Menten equation")
+                text: qsTr("Biocatalytic reaction")
                 font.pixelSize: 20
             }
 
@@ -856,7 +856,7 @@ Rectangle {
                 id: substrateInhibitionText
                 x: 45
                 y: 155
-                text: qsTr("Equation of substrate inhibition")
+                text: qsTr("Substrate inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -864,7 +864,7 @@ Rectangle {
                 id: productInhibitionText
                 x: 45
                 y: 285
-                text: qsTr("Equation of product inhibition")
+                text: qsTr("Product inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -1110,7 +1110,7 @@ Rectangle {
                 id: chargeTransferText
                 x: 45
                 y: 414
-                text: qsTr("Electrones passed during a charge transfer on the electrode surface")
+                text: qsTr("Electrones passed during a charge transfer on an electrode surface")
                 font.pixelSize: 20
             }
 
