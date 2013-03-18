@@ -582,7 +582,7 @@ Rectangle {
                 id: mainConstantsText
                 x: 39
                 y: 15
-                text: qsTr("Reaction rate constants of Michaelis-Menten equation")
+                text: qsTr("Reaction rate constants of biocatalytic reaction")
                 font.pixelSize: 20
             }
 
@@ -590,7 +590,7 @@ Rectangle {
                 id: substrateConstantsText
                 x: 39
                 y: 163
-                text: qsTr("Reaction rate constants of substrate inhibition equations")
+                text: qsTr("Reaction rate constants of substrate inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -598,7 +598,7 @@ Rectangle {
                 id: productConstantsText
                 x: 39
                 y: 277
-                text: qsTr("Reaction rate constants of product inhibition equations")
+                text: qsTr("Reaction rate constants of product inhibition reaction")
                 font.pixelSize: 20
             }
 
