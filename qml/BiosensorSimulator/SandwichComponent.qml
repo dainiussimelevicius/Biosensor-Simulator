@@ -469,7 +469,7 @@ Rectangle {
             id: enzEnzymeConcentrationText
             x: 509
             y: 9
-            text: qsTr("[E<sub>0</sub>] = ")
+            text: qsTr("[E]<sub>0</sub> = ")
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 18

@@ -582,7 +582,7 @@ Rectangle {
                 id: mainConstantsText
                 x: 39
                 y: 15
-                text: qsTr("Reaction rate constants of Michaelis-Menten equation")
+                text: qsTr("Reaction rate constants of biocatalytic reaction")
                 font.pixelSize: 20
             }
 
@@ -590,7 +590,7 @@ Rectangle {
                 id: substrateConstantsText
                 x: 39
                 y: 163
-                text: qsTr("Reaction rate constants of substrate inhibition equations")
+                text: qsTr("Reaction rate constants of substrate inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -598,7 +598,7 @@ Rectangle {
                 id: productConstantsText
                 x: 39
                 y: 277
-                text: qsTr("Reaction rate constants of product inhibition equations")
+                text: qsTr("Reaction rate constants of product inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -848,7 +848,7 @@ Rectangle {
                 id: mainEquationText
                 x: 45
                 y: 15
-                text: qsTr("Michaelis-Menten equation")
+                text: qsTr("Biocatalytic reaction")
                 font.pixelSize: 20
             }
 
@@ -856,7 +856,7 @@ Rectangle {
                 id: substrateInhibitionText
                 x: 45
                 y: 155
-                text: qsTr("Equation of substrate inhibition")
+                text: qsTr("Substrate inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -864,7 +864,7 @@ Rectangle {
                 id: productInhibitionText
                 x: 45
                 y: 285
-                text: qsTr("Equation of product inhibition")
+                text: qsTr("Product inhibition reaction")
                 font.pixelSize: 20
             }
 
@@ -1110,7 +1110,7 @@ Rectangle {
                 id: chargeTransferText
                 x: 45
                 y: 414
-                text: qsTr("Electrones passed during a charge transfer on the electrode surface")
+                text: qsTr("Electrones passed during a charge transfer on an electrode surface")
                 font.pixelSize: 20
             }
 
