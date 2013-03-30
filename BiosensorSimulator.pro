@@ -14,9 +14,6 @@ SOURCES += main.cpp \
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
-# Reikalinga dinaminiam bibliotekų linkinimui
-LIBS += -ldl
-
 HEADERS += \
 	calculator_runner.h \
 	biosensor_information.h

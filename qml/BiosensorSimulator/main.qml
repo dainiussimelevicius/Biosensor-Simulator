@@ -814,7 +814,7 @@ Rectangle {
 
             Text {
                 id: k1Const
-                x: 135
+                x: 145
                 y: 61
                 text: qsTr("k<sub>1</sub>")
                 font.pixelSize: 18
@@ -824,7 +824,7 @@ Rectangle {
                 id: mainReaction
                 x: 45
                 y: 77
-                text: qsTr("E + S   ⇄   ES   →   E + P")
+                text: qsTr("E + S <-> ES -> E + P")
                 font.pixelSize: 30
             }
 
@@ -832,7 +832,7 @@ Rectangle {
                 id: substrateInhibitionReaction
                 x: 45
                 y: 206
-                text: qsTr("ES + S   ⇄   ESS")
+                text: qsTr("ES + S <-> ESS")
                 font.pixelSize: 30
             }
 
@@ -840,7 +840,7 @@ Rectangle {
                 id: productInhibitionReaction
                 x: 45
                 y: 337
-                text: qsTr("E + P   ⇄   EP")
+                text: qsTr("E + P <-> EP")
                 font.pixelSize: 30
             }
 
@@ -894,7 +894,7 @@ Rectangle {
 
             Text {
                 id: k_1Const
-                x: 135
+                x: 143
                 y: 108
                 text: qsTr("k<sub>-1</sub>")
                 font.pixelSize: 18
@@ -902,7 +902,7 @@ Rectangle {
 
             Text {
                 id: k2Const
-                x: 233
+                x: 236
                 y: 61
                 text: qsTr("k<sub>2</sub>")
                 font.pixelSize: 18
@@ -910,7 +910,7 @@ Rectangle {
 
             Text {
                 id: k3Const
-                x: 149
+                x: 163
                 y: 190
                 text: qsTr("k<sub>3</sub>")
                 font.pixelSize: 18
@@ -918,7 +918,7 @@ Rectangle {
 
             Text {
                 id: k_3Const
-                x: 149
+                x: 161
                 y: 237
                 text: qsTr("k<sub>-3</sub>")
                 font.pixelSize: 18
@@ -926,7 +926,7 @@ Rectangle {
 
             Text {
                 id: k4Const
-                x: 135
+                x: 145
                 y: 321
                 text: qsTr("k<sub>4</sub>")
                 font.pixelSize: 18
@@ -934,7 +934,7 @@ Rectangle {
 
             Text {
                 id: k_4Const
-                x: 135
+                x: 143
                 y: 368
                 text: qsTr("k<sub>-4</sub>")
                 font.pixelSize: 18
@@ -1126,7 +1126,7 @@ Rectangle {
                 id: chargeTransferReaction
                 x: 45
                 y: 454
-                text: qsTr("P (+/-) n<sub>e</sub> e<sup>-</sup>   →   P<sub>final</sub>")
+                text: qsTr("P (+/-) n<sub>e</sub> e<sup>-</sup>    ->   P<sub>final</sub>")
                 font.pixelSize: 30
             }
 

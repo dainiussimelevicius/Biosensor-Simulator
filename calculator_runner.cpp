@@ -1,16 +1,15 @@
 #include <stdio.h>
-#include <dlfcn.h>
 #include <QDeclarativeProperty>
 #include <stdio.h>
 #include "calculator_runner.h"
 
 CalculatorRunner::CalculatorRunner() : QObject(0) {
-    calculator_lib_handle_ = dlopen("./libbiosensor_calculator.so", RTLD_NOW);
+	calculator_lib_handle_ = LoadLibraryA("biosensor_calculator.dll");
     if(calculator_lib_handle_ == NULL) {
         printf("Calculator library was not found!\n");
         exit(EXIT_FAILURE);
     }
-    calculate_function_ = (void (*)(struct bio_params *, void *, void (*)(void *, int))) dlsym(calculator_lib_handle_, "calculate");
+	calculate_function_ = (void (*)(struct bio_params *, void *, void (*)(void *, int))) GetProcAddress(calculator_lib_handle_, "calculate");
     if(calculate_function_ == NULL) {
         printf("Could not load calculator function!\n");
         exit(EXIT_FAILURE);
@@ -20,7 +19,7 @@ CalculatorRunner::CalculatorRunner() : QObject(0) {
 }
 
 CalculatorRunner::~CalculatorRunner() {
-    dlclose(calculator_lib_handle_);
+    FreeLibrary(calculator_lib_handle_);
     if (biosensor_information_ != NULL) {
         free(biosensor_information_->layers);
         free(biosensor_information_->out_file_name);

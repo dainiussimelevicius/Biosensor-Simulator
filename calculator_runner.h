@@ -1,6 +1,7 @@
 #ifndef CALCULATORRUNNER_H
 #define CALCULATORRUNNER_H
 
+#include <windows.h>
 #include <QObject>
 #include <QThread>
 #include <QMutex>
@@ -46,7 +47,7 @@ public slots:
     void update_time(int id, int time);
     void close_progress(int id);
 private:
-    void *calculator_lib_handle_;
+    HINSTANCE calculator_lib_handle_;
     void (*calculate_function_)(struct bio_params *, void *, void (*)(void *, int));
     struct bio_params *biosensor_information_;
     QList<QSharedPointer<QThread> > thread_list_;
